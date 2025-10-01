@@ -14,7 +14,7 @@ namespace _Project.Scripts.Project.Configs.Windows
         [SerializeField] private PopupWindow[] _projectPopups;
         [SerializeField] private PopupWindow[] _startScenePopups;
         [SerializeField] private PopupWindow[] _mainScenePopups;
-        [SerializeField] private PopupWindow[] _gameScenePopups;
+        [SerializeField] private PopupWindow[] _brickTowerGameScenePopups;
 
         public void Init()
         {
@@ -26,14 +26,8 @@ namespace _Project.Scripts.Project.Configs.Windows
 
             switch (getObj.SceneName)
             {
-                case SceneName.StartScene:
-                    return _startScenePopups;
-
-                case SceneName.MainScene:
-                    return _mainScenePopups;
-
-                case SceneName.GameScene:
-                    return _gameScenePopups;
+                case SceneName.BrickTowerGameScene:
+                    return _brickTowerGameScenePopups;
             }
 
             return _projectPopups;

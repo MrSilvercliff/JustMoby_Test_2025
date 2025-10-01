@@ -12,9 +12,7 @@ namespace _Project.Scripts.Project.Configs.Windows
     public class ViewConfig : ScriptableObject, IViewsConfig
     {
         [SerializeField] private ViewWindow[] _projectViews;
-        [SerializeField] private ViewWindow[] _startSceneViews;
-        [SerializeField] private ViewWindow[] _mainSceneViews;
-        [SerializeField] private ViewWindow[] _gameSceneViews;
+        [SerializeField] private ViewWindow[] _brickTowerGameSceneViews;
 
         public void Init()
         {
@@ -26,14 +24,8 @@ namespace _Project.Scripts.Project.Configs.Windows
 
             switch (getObj.SceneName)
             {
-                case SceneName.StartScene:
-                    return _startSceneViews;
-
-                case SceneName.MainScene:
-                    return _mainSceneViews;
-
-                case SceneName.GameScene:
-                    return _gameSceneViews;
+                case SceneName.BrickTowerGameScene:
+                    return _brickTowerGameSceneViews;
             }
 
             return _projectViews;

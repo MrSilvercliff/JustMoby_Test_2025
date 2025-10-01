@@ -11,9 +11,7 @@ namespace _Project.Scripts.Project.Configs.Windows
     public class PanelConfig : ScriptableObject, IPanelsConfig
     {
         [SerializeField] private PanelWindow[] _projectPanels;
-        [SerializeField] private PanelWindow[] _startScenePanels;
-        [SerializeField] private PanelWindow[] _mainScenePanels;
-        [SerializeField] private PanelWindow[] _gameScenePanels;
+        [SerializeField] private PanelWindow[] _brickTowerGameScenePanels;
 
         public void Init()
         {
@@ -25,14 +23,8 @@ namespace _Project.Scripts.Project.Configs.Windows
 
             switch (getObj.SceneName)
             {
-                case SceneName.StartScene:
-                    return _startScenePanels;
-
-                case SceneName.MainScene:
-                    return _mainScenePanels;
-
-                case SceneName.GameScene:
-                    return _gameScenePanels;
+                case SceneName.BrickTowerGameScene:
+                    return _brickTowerGameScenePanels;
             }
 
             return _projectPanels;
