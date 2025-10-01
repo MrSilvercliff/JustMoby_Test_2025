@@ -12,8 +12,6 @@ namespace _Project.Scripts.Project.Configs.Windows
     public class PopupConfig : ScriptableObject, IPopupsConfig
     {
         [SerializeField] private PopupWindow[] _projectPopups;
-        [SerializeField] private PopupWindow[] _startScenePopups;
-        [SerializeField] private PopupWindow[] _mainScenePopups;
         [SerializeField] private PopupWindow[] _brickTowerGameScenePopups;
 
         public void Init()
