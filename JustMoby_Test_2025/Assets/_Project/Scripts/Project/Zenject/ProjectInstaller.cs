@@ -3,6 +3,7 @@ using _Project.Scripts.Project.Handlers.SceneLoading;
 using _Project.Scripts.Project.Handlers.UI.Panels;
 using _Project.Scripts.Project.Handlers.UI.Popups;
 using _Project.Scripts.Project.Handlers.UI.Views;
+using _Project.Scripts.Project.Services;
 using _Project.Scripts.Project.Services.SceneLoading;
 using _Project.Scripts.Project.Services.UI.Panels;
 using _Project.Scripts.Project.Services.UI.Popups;
@@ -57,6 +58,8 @@ namespace _Project.Scripts.Project.Zenject
             BindPopupServices();
 
             BindPanelServices();
+
+            BindProjectServiceIniter();
         }
 
         #region BasicServices
@@ -99,6 +102,11 @@ namespace _Project.Scripts.Project.Zenject
             Container.Bind<IPanelSettingsRepository>().To<PanelSettingsRepository>().AsSingle();
             Container.Bind<IPanelHandler>().To<PanelHandler>().AsSingle();
             Container.Bind<IPanelController>().FromInstance(_panelController).AsSingle();
+        }
+
+        private void BindProjectServiceIniter()
+        { 
+            Container.Bind<IProjectServiceIniter>().To<ProjectServiceIniter>().AsSingle();
         }
 
         #endregion BasicServices
