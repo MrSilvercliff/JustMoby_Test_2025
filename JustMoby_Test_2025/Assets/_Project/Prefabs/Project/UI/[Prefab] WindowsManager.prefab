@@ -9,12 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 260249657031594388, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 260249657031594388, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 260249657031594388, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: m_ReferenceResolution.x
       value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 260249657031594388, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 299486469146064676, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 299486469146064676, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 299486469146064676, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: m_ReferenceResolution.x
@@ -67,6 +83,14 @@ PrefabInstance:
     - target: {fileID: 5043303967268011535, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: orthographic size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820671618566450859, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820671618566450859, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6820671618566450859, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: m_ReferenceResolution.x
