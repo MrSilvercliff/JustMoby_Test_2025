@@ -4,9 +4,9 @@ using UnityEngine;
 using Zenject;
 using ZerglingUnityPlugins.ZenjectExtentions.SceneInstallers;
 
-namespace _Project.Scripts.GameScene.Zenject
+namespace _Project.Scripts.BrickTowerGameScene.Zenject
 {
-    public class GameSceneInstaller : SceneInstallerBasic
+    public class BrickTowerGameSceneInstaller : SceneInstallerBasic
     {
         public override void InstallBindings()
         {
