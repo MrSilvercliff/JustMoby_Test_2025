@@ -7,6 +7,6 @@ namespace _Project.Scripts.Project.Enums
     public enum SceneName
     {
         Project,
-        BrickTowerGameScene,
+        CubeTowerGameScene,
     }
 }

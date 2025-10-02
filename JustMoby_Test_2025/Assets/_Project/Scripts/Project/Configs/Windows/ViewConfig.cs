@@ -24,7 +24,7 @@ namespace _Project.Scripts.Project.Configs.Windows
 
             switch (getObj.SceneName)
             {
-                case SceneName.BrickTowerGameScene:
+                case SceneName.CubeTowerGameScene:
                     return _brickTowerGameSceneViews;
             }
 
