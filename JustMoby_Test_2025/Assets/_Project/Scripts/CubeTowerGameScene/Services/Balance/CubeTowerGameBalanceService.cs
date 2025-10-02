@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZerglingUnityPlugins.Tools.Scripts.Interfaces.ProjectService.AsyncSync;
 
-namespace _Project.Scripts.BrickTowerGameScene.Services.Balance
+namespace _Project.Scripts.CubeTowerGameScene.Services.Balance
 {
-    public interface IBrickTowerGameBalanceService : IBalanceService
-    { 
+    public interface ICubeTowerGameBalanceService : IBalanceService
+    {
     }
 
-    public class BrickTowerGameBalanceService : BalanceService, IBrickTowerGameBalanceService
+    public class CubeTowerGameBalanceService : BalanceService, ICubeTowerGameBalanceService
     {
-        public BrickTowerGameBalanceService()
-        { 
+        public CubeTowerGameBalanceService()
+        {
         }
 
         protected override HashSet<IProjectService> GetStoragesToInit()

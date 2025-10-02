@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace _Project.Scripts.BrickTowerGameScene.Scene
+namespace _Project.Scripts.CubeTowerGameScene.Scene
 {
-    public class BrickTowerGameSceneController : SceneController
+    public class CubeTowerGameSceneController : SceneController
     {
         protected override Task OnAwake()
         {
