@@ -14,9 +14,7 @@ namespace _Project.Scripts.Project.Balance.Storages
     public abstract class BalanceStorageScriptableObject<TInterface, TClass> : IBalanceStorageScriptableObject
         where TClass : ScriptableObject, TInterface
     {
-        protected TInterface Config => _config;
-
-        [Inject] private TClass _config;
+        [Inject] protected TInterface _config;
 
         public async Task<bool> Init()
         {
