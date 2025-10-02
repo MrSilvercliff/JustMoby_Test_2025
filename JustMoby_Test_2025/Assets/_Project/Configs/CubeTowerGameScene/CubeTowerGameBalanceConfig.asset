@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd9937a6ae5f06c43bafc3f5c60888f8, type: 3}
-  m_Name: BrickTowerGameBalanceConfig
+  m_Script: {fileID: 11500000, guid: 8a71d724b6953014b865f9b33f99aecf, type: 3}
+  m_Name: CubeTowerGameBalanceConfig
   m_EditorClassIdentifier: 
+  _cubeBalanceConfig: {fileID: 11400000, guid: abfe5d0c542a9f241874ee4ebe4ea875, type: 2}
