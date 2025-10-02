@@ -1,3 +1,4 @@
+using _Project.Scripts.CubeTowerGameScene.Services.Balance;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.Project.Services;
 using System.Collections;
@@ -18,6 +19,9 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
     public class CubeTowerGameSceneServiceIniter : ServiceIniter, ICubeTowerGameSceneServiceIniter
     {
         #region First
+
+        // balance
+        [Inject] private ICubeTowerGameBalanceService _cubeTowerGameBalanceService;
 
         // windows
         [Inject] private IViewController _viewController;
@@ -51,6 +55,8 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
 
         private async Task<bool> InitServicesFirst()
         {
+            AddService(_cubeTowerGameBalanceService);
+
             AddService(_viewController);
             AddService(_popupController);
             AddService(_panelSettingsRepository);
