@@ -37,7 +37,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance.Storages
 
         private void InitCubeBalanceModels()
         {
-            var cubeConfigItems = Config.CubeBalanceConfig.AllCubeItems;
+            var cubeConfigItems = _config.CubeBalanceConfig.AllCubeItems;
 
             foreach (var cubeConfigItem in cubeConfigItems)
             {
@@ -59,7 +59,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance.Storages
 
         public IReadOnlyCollection<string> GetActiveCubeBalanceModels()
         {
-            var result = Config.CubeBalanceConfig.ActiveCubeItems;
+            var result = _config.CubeBalanceConfig.ActiveCubeItems;
             return result;
         }
     }
