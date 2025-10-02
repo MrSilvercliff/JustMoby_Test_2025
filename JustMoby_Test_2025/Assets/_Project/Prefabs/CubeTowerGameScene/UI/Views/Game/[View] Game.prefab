@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 8151070879684527451}
   - component: {fileID: 909029172098443969}
   - component: {fileID: 4586703988313554443}
+  - component: {fileID: 2416789932818053623}
   - component: {fileID: 7110791094196868054}
   m_Layer: 5
   m_Name: '[View] Game'
@@ -312,6 +313,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2416789932818053623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271978824491955970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b6a3540f7e60445b74455ddc83c811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
+  _contentMin: {fileID: 0}
+  _contentMax: {fileID: 0}
+  _contentMinMax: {fileID: 313390771991840303}
+  _cubeScrollWidget: {fileID: 3596551203022475039}
 --- !u!114 &7110791094196868054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,8 +422,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5411224531361984576}
+  - component: {fileID: 3596551203022475039}
   m_Layer: 5
-  m_Name: '[Container] CubeScroll'
+  m_Name: '[Widget] CubeScroll'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,6 +450,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 277}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &3596551203022475039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4635455631325745660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099095c2ee39eaf40a6b0221ac1f4726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4916916672778734931
 GameObject:
   m_ObjectHideFlags: 0
