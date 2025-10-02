@@ -7,21 +7,19 @@ using ZerglingUnityPlugins.ZenjectExtentions.ContextProvider;
 
 namespace ZerglingUnityPlugins.ZenjectExtentions.SceneInstallers
 {
-    public class SceneInstallerBasic : MonoInstaller
+    public abstract class SceneInstallerBasic : MonoInstaller
     {
         [SerializeField] private SceneContext _sceneContext;
 
         [Inject] private IZenjectContextProvider _contextProvider;
 
-        public override void InstallBindings()
+        public sealed override void InstallBindings()
         {
             LogUtils.Info(this, "Install bindings");
             OnInstallBindings();
             _contextProvider.UpdateContext(_sceneContext);
         }
 
-        protected virtual void OnInstallBindings()
-        {
-        }
+        protected abstract void OnInstallBindings();
     }
 }
