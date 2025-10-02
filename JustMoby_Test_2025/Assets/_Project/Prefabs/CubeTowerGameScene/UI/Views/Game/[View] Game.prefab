@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b6a3540f7e60445b74455ddc83c811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
+  _canvas: {fileID: 909029172098443969}
   _contentMin: {fileID: 0}
   _contentMax: {fileID: 0}
   _contentMinMax: {fileID: 313390771991840303}
