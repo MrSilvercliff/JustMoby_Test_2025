@@ -22,5 +22,11 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _cubeScrollWidget.Init();
             return true;
         }
+
+        protected override Task OnPreOpen()
+        {
+            _cubeScrollWidget.SpawnCubeWidgets();
+            return Task.CompletedTask;
+        }
     }
 }
