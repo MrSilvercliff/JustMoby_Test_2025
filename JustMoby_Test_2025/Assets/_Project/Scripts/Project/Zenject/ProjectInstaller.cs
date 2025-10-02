@@ -4,6 +4,7 @@ using _Project.Scripts.Project.Handlers.UI.Panels;
 using _Project.Scripts.Project.Handlers.UI.Popups;
 using _Project.Scripts.Project.Handlers.UI.Views;
 using _Project.Scripts.Project.Services;
+using _Project.Scripts.Project.Services.ObjectPools;
 using _Project.Scripts.Project.Services.SceneLoading;
 using _Project.Scripts.Project.Services.UI.Panels;
 using _Project.Scripts.Project.Services.UI.Popups;
@@ -47,6 +48,8 @@ namespace _Project.Scripts.Project.Zenject
 
         private void BindBasicServices()
         {
+            BindObjectPools();
+
             BindZenjectExtensions();
 
             BindMonoUpdater();
@@ -63,6 +66,11 @@ namespace _Project.Scripts.Project.Zenject
         }
 
         #region BasicServices
+
+        private void BindObjectPools()
+        {
+            Container.Bind<IProjectObjectPoolService>().To<ProjectObjectPoolService>().AsSingle();
+        }
 
         private void BindZenjectExtensions()
         {
