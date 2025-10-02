@@ -1,21 +1,31 @@
+using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
 using _Project.Scripts.Project.Scenes;
+using Assets._Project.Scripts.CubeTowerGameScene.Scene;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
+using ZerglingUnityPlugins.WindowsManagerAsync.Scripts.Services.Views;
 
 namespace _Project.Scripts.CubeTowerGameScene.Scene
 {
     public class CubeTowerGameSceneController : SceneController
     {
-        protected override Task OnAwake()
+        [Inject] private ICubeTowerGameSceneServiceIniter _serviceIniter;
+
+        [Inject] private IViewController _viewController;
+
+        protected override async Task OnAwake()
         {
-            return Task.CompletedTask;
+            await _serviceIniter.Init();
         }
 
-        protected override Task OnStart()
+        protected override async Task OnStart()
         {
-            return Task.CompletedTask;
+            await _serviceIniter.InitServices(1);
+
+            await _viewController.OpenView<GameView>();
         }
 
         protected override Task OnLateStart()
