@@ -1,5 +1,5 @@
 using _Project.Scripts.CubeTowerGameScene.Configs;
-using _Project.Scripts.Project.Balance;
+using _Project.Scripts.Project.Balance.Storages;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
