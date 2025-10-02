@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: ViewConfig
   m_EditorClassIdentifier: 
   _projectViews: []
-  _startSceneViews: []
-  _mainSceneViews: []
-  _gameSceneViews: []
+  _brickTowerGameSceneViews:
+  - {fileID: 2416789932818053623, guid: 55e8a480e4091aa49812fb616f225202, type: 3}
