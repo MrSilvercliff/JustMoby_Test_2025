@@ -53,4 +53,12 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: e77979776211c214cad028b523b9c73f, type: 3}
   - _id: Cube_20
     _sprite: {fileID: 21300000, guid: 3a5975312121f0740af73df49907d337, type: 3}
-  _activeCubeItems: []
+  _activeCubeItems:
+  - Cube_1
+  - Cube_2
+  - Cube_3
+  - Cube_4
+  - Cube_5
+  - Cube_6
+  - Cube_7
+  - Cube_8
