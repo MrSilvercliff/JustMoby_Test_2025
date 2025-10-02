@@ -12,7 +12,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance.Storages
     public interface ICubeBalanceStorage : IBalanceStorageScriptableObject
     {
         bool TryGetCubeBalanceModel(string id, out ICubeBalanceModel cubeBalanceModel);
-        IReadOnlyCollection<string> GetActiveCubeBalanceModels();
+        IReadOnlyList<ICubeBalanceModel> GetActiveCubeBalanceModels();
     }
 
     public class CubeBalanceStorage : BalanceStorageScriptableObject<ICubeTowerGameBalanceConfig, CubeTowerGameBalanceConfig>, ICubeBalanceStorage
@@ -57,9 +57,20 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance.Storages
             return result;
         }
 
-        public IReadOnlyCollection<string> GetActiveCubeBalanceModels()
+        public IReadOnlyList<ICubeBalanceModel> GetActiveCubeBalanceModels()
         {
-            var result = _config.CubeBalanceConfig.ActiveCubeItems;
+            var result = new List<ICubeBalanceModel>();
+
+            var activeCubeIds = _config.CubeBalanceConfig.ActiveCubeItems;
+
+            foreach (var activeCubeId in activeCubeIds)
+            {
+                var tryResult = TryGetCubeBalanceModel(activeCubeId, out var cubeBalanceModel);
+
+                if (tryResult)
+                    result.Add(cubeBalanceModel);
+            }
+
             return result;
         }
     }
