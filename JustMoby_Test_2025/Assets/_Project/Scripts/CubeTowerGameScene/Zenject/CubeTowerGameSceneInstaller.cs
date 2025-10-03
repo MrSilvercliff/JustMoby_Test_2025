@@ -1,6 +1,8 @@
 using _Project.Scripts.CubeTowerGameScene.Configs;
+using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Scene;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
+using _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using Assets._Project.Scripts.CubeTowerGameScene.Scene;
@@ -23,17 +25,23 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
 
             BindBalanceServices();
 
+            BindInput();
+
+            BindDragAndDrop();
+
             BindSceneServiceIniter();
         }
 
         private void BindObjectPools()
         {
-            BindCubeWidgetObjectPool();
+            BindCubeWidgetPool();
+            BindCubeDraggableWidgetPool();
+            BindCubeScrollDraggableWidgetPool();
 
             Container.Bind<ICubeTowerGameSceneObjectPoolService>().To<CubeTowerGameSceneObjectPoolService>().AsSingle();
         }
 
-        private void BindCubeWidgetObjectPool()
+        private void BindCubeWidgetPool()
         {
             var poolItem = _objectPoolContainer.CubeWidget;
 
@@ -47,10 +55,48 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
                 .UnderTransform(container);
         }
 
+        private void BindCubeDraggableWidgetPool()
+        {
+            var poolItem = _objectPoolContainer.CubeDraggableWidget;
+
+            var prefab = poolItem.Prefab;
+            var container = poolItem.Container;
+            var poolInitSize = poolItem.PoolInitialSize;
+
+            Container.BindMemoryPool<CubeDraggableWidget, CubeDraggableWidget.Pool>()
+                .WithInitialSize(poolInitSize)
+                .FromComponentInNewPrefab(prefab)
+                .UnderTransform(container);
+        }
+
+        private void BindCubeScrollDraggableWidgetPool()
+        { 
+            var poolItem = _objectPoolContainer.CubeScrollDraggableWidget;
+
+            var prefab = poolItem.Prefab;
+            var container = poolItem.Container;
+            var poolInitSize = poolItem.PoolInitialSize;
+
+            Container.BindMemoryPool<CubeScrollDraggableWidget, CubeScrollDraggableWidget.Pool>()
+                .WithInitialSize(poolInitSize)
+                .FromComponentInNewPrefab(prefab)
+                .UnderTransform(container);
+        }
+
         private void BindBalanceServices()
         {
             Container.Bind<ICubeTowerGameBalanceConfig>().FromInstance(_balanceConfig).AsSingle();
             Container.Bind<ICubeTowerGameBalanceService>().To<CubeTowerGameBalanceService>().AsSingle();
+        }
+
+        private void BindInput()
+        {
+            Container.Bind<IInputController>().To<KeyboardMouseInputController>().AsSingle();
+        }
+
+        private void BindDragAndDrop()
+        {
+            Container.Bind<IGameDragAndDropController>().To<GameDragAndDropController>().AsSingle();
         }
 
         private void BindSceneServiceIniter()
