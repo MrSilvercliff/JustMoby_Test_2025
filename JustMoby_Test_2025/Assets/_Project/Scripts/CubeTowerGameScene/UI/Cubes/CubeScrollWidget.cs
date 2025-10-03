@@ -1,6 +1,6 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
+using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.Project.Extensions;
-using _Project.Scripts.Project.Services.ObjectPools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
         [SerializeField] private Transform _scrollViewContent;
 
         [Inject] private ICubeTowerGameBalanceService _balanceService;
-        [Inject] private IProjectObjectPoolService _objectPoolService;
+        [Inject] private ICubeTowerGameSceneObjectPoolService _objectPoolService;
 
         private List<CubeWidget> _widgets;
 
@@ -24,7 +24,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
 
         public void SpawnCubeWidgets()
         {
-            var cubeWidgetPool = _objectPoolService.GetObjectPool<CubeWidget.Pool>();
+            var cubeWidgetPool = _objectPoolService.CubeWidgetPool;
             var activeBalanceModels = _balanceService.Cubes.GetActiveCubeBalanceModels();
 
             foreach (var cubeBalanceModel in activeBalanceModels) 
