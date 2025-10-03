@@ -112,6 +112,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2291994453378590298}
+  - {fileID: 7755364517941771104}
+  - {fileID: 5142467696415409167}
   m_Father: {fileID: 4035676613217974494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3378131583754481435
@@ -129,6 +131,14 @@ MonoBehaviour:
   _cubeWidget:
     _prefab: {fileID: 1189531380596888348, guid: 3f7f071d1504a984cb2943fbe5bfa370, type: 3}
     _container: {fileID: 2291994453378590298}
+    _poolInitialSize: 0
+  _cubeDraggableWidget:
+    _prefab: {fileID: 6274629232458977939, guid: 7f2dbf5a2de5a514ea778d5595536b78, type: 3}
+    _container: {fileID: 7755364517941771104}
+    _poolInitialSize: 0
+  _cubeScrollDraggableWidget:
+    _prefab: {fileID: 2556505804532703364, guid: f2cac83935e2f5a4ea0fac1d1e35ba4d, type: 3}
+    _container: {fileID: 5142467696415409167}
     _poolInitialSize: 0
 --- !u!1 &4470350991627895832
 GameObject:
@@ -153,6 +163,68 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470350991627895832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4864010709049305777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5340699727549280686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5142467696415409167}
+  m_Layer: 0
+  m_Name: '[Container] CubeScrollDraggableWidget'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5142467696415409167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340699727549280686}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4864010709049305777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7380892156073202239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7755364517941771104}
+  m_Layer: 0
+  m_Name: '[Container] CubeDraggableWidget'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7755364517941771104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380892156073202239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
