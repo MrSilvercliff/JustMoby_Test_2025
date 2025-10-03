@@ -13,7 +13,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
     {
         [SerializeField] private Image _image;
 
-        private ICubeBalanceModel _balanceModel;
+        protected ICubeBalanceModel _balanceModel;
 
         public void Setup(ICubeBalanceModel cubeBalanceModel)
         { 
@@ -39,17 +39,17 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
             _image.sprite = _balanceModel.Sprite;
         }
 
-        public void OnCreated()
+        public virtual void OnCreated()
         {
             gameObject.SetActive(false);
         }
 
-        public void OnDespawned()
+        public virtual void OnDespawned()
         {
             gameObject.SetActive(false);
         }
 
-        public void OnSpawned()
+        public virtual void OnSpawned()
         {
         }
 
