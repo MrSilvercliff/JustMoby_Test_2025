@@ -8,7 +8,7 @@ using UnityEngine;
 using Zenject;
 using ZerglingUnityPlugins.Tools.Scripts.Log;
 
-namespace _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop
+namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 {
     public interface IGameDragAndDropController
     {
