@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CubeTowerGameBalanceConfig
   m_EditorClassIdentifier: 
   _cubeBalanceConfig: {fileID: 11400000, guid: abfe5d0c542a9f241874ee4ebe4ea875, type: 2}
+  _cubeDragAndDropBalanceConfig: {fileID: 11400000, guid: ed51a644b40b58147b16a8ebdf476757, type: 2}
