@@ -1,4 +1,4 @@
-using _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop;
+using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +10,18 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole
 {
     public class CubeDeleteHoleWidget : MonoBehaviour, IDropHandler
     {
+        [SerializeField] private PolygonCollider2D _collider;
+
         [Inject] private IGameDragAndDropController _dragAndDropController;
 
         public void OnDrop(PointerEventData eventData)
         {
-            LogUtils.Error(this, $"CubeDeleteHoleWidget OnDrop");
-            _dragAndDropController.OnDrop(this);
+            LogUtils.Error(this, $"OnDrop");
+
+            if (_collider.OverlapPoint(eventData.position))
+                _dragAndDropController.OnDrop(this);
+            else
+                _dragAndDropController.OnDrop();
         }
     }
 }
