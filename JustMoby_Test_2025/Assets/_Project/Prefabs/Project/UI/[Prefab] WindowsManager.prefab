@@ -80,9 +80,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3689503796381644847, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689503796381644847, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849249236303933649, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849249236303933649, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5043303967268011535, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: orthographic size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195252570575350479, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195252570575350479, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6820671618566450859, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: m_ScreenMatchMode
@@ -103,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 7761308367452742116, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
       propertyPath: m_Name
       value: '[Prefab] WindowsManager'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934042383087943724, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5783582067148863346, guid: b779b1612bdcd2d40adc6092dff55371, type: 3}
