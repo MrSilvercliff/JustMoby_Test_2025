@@ -29,9 +29,6 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
         [Inject] private IPanelSettingsRepository _panelSettingsRepository;
         [Inject] private IPanelController _panelController;
 
-        // object pools
-        [Inject] private ICubeTowerGameSceneObjectPoolService _cubeTowerGameSceneObjectPoolService;
-
         #endregion First
 
         protected override Task<bool> OnInit()
@@ -61,8 +58,6 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
             AddService(_popupController);
             AddService(_panelSettingsRepository);
             AddService(_panelController);
-
-            AddService(_cubeTowerGameSceneObjectPoolService);
 
             var result = await InitServices();
             return result;
