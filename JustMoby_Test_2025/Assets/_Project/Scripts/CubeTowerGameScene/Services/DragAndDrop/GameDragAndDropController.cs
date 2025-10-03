@@ -1,10 +1,12 @@
 using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
+using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using ZerglingUnityPlugins.Tools.Scripts.Log;
 
 namespace _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop
 {
@@ -14,7 +16,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop
         event Action DragEndEvent;
 
         void OnDrag(ICubeBalanceModel cubeBalanceModel);
-        void OnDrop();
+        void OnDrop(CubeDeleteHoleWidget cubeDeleteHoleWidget);
     }
 
     public class GameDragAndDropController : IGameDragAndDropController
@@ -32,11 +34,17 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop
             DragStartEvent?.Invoke(cubeBalanceModel);
         }
 
-        public void OnDrop()
+        public void OnDrop(CubeDeleteHoleWidget cubeDeleteHoleWidget)
         {
-            _dropInProcess = true;
-            DragEndEvent?.Invoke();
-            _dropInProcess = false;
+            LogUtils.Error(this, $"OnDrop CubeDeleteHoleWidget 1");
+
+            if (_dropInProcess)
+                return;
+
+            LogUtils.Error(this, $"OnDrop CubeDeleteHoleWidget 2");
+
+            OnDrop();
+            _inputController.PointerUpEvent -= OnPointerUpEvent;
         }
 
         private void OnPointerUpEvent(Vector2 vector)
@@ -44,8 +52,17 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.DragAndDrop
             if (_dropInProcess)
                 return;
 
+            LogUtils.Error(this, $"OnDrop OnPointerUpEvent");
+
             OnDrop();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
+        }
+
+        private void OnDrop()
+        {
+            _dropInProcess = true;
+            DragEndEvent?.Invoke();
+            _dropInProcess = false;
         }
     }
 }
