@@ -1,3 +1,4 @@
+using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.Project.Services;
@@ -29,6 +30,9 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
         [Inject] private IPanelSettingsRepository _panelSettingsRepository;
         [Inject] private IPanelController _panelController;
 
+        // input
+        [Inject] private IInputController _inputController;
+
         #endregion First
 
         protected override Task<bool> OnInit()
@@ -58,6 +62,8 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
             AddService(_popupController);
             AddService(_panelSettingsRepository);
             AddService(_panelController);
+
+            AddService(_inputController);
 
             var result = await InitServices();
             return result;
