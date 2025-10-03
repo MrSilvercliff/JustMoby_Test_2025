@@ -10,7 +10,7 @@ using Zenject;
 
 namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
 {
-    public class CubeScrollDraggableWidget : CubeDraggableWidget, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class CubeScrollDraggableWidget : CubeWidget, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [Inject] private ICubeTowerGameBalanceService _balanceService;
         [Inject] private IGameDragAndDropController _dragAndDropController;

@@ -35,7 +35,6 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
         private void BindObjectPools()
         {
             BindCubeWidgetPool();
-            BindCubeDraggableWidgetPool();
             BindCubeScrollDraggableWidgetPool();
 
             Container.Bind<ICubeTowerGameSceneObjectPoolService>().To<CubeTowerGameSceneObjectPoolService>().AsSingle();
@@ -50,20 +49,6 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
             var poolInitSize = poolItem.PoolInitialSize;
 
             Container.BindMemoryPool<CubeWidget, CubeWidget.Pool>()
-                .WithInitialSize(poolInitSize)
-                .FromComponentInNewPrefab(prefab)
-                .UnderTransform(container);
-        }
-
-        private void BindCubeDraggableWidgetPool()
-        {
-            var poolItem = _objectPoolContainer.CubeDraggableWidget;
-
-            var prefab = poolItem.Prefab;
-            var container = poolItem.Container;
-            var poolInitSize = poolItem.PoolInitialSize;
-
-            Container.BindMemoryPool<CubeDraggableWidget, CubeDraggableWidget.Pool>()
                 .WithInitialSize(poolInitSize)
                 .FromComponentInNewPrefab(prefab)
                 .UnderTransform(container);
