@@ -1,5 +1,6 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
 using _Project.Scripts.Project.ObjectPools;
+using _Project.Scripts.Project.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ using Zenject;
 
 namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
 {
-    public class CubeWidget : MonoBehaviour, IProjectPoolable
+    public class CubeWidget : UIWidget, IProjectPoolable
     {
         [SerializeField] private Image _image;
 
