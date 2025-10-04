@@ -11,21 +11,25 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance
     public interface ICubeTowerGameBalanceService : IBalanceService
     {
         ICubeBalanceStorage Cubes { get; }
-        ICubeDragAndDropBalanceStorage CubeDragAndDropBalanceStorage { get; }
+        ICubeDragAndDropBalanceStorage CubeDragAndDrop{ get; }
+        ICubeTowerBuildBalanceStorage CubeTowerBuild { get; }
     }
 
     public class CubeTowerGameBalanceService : BalanceService, ICubeTowerGameBalanceService
     {
         public ICubeBalanceStorage Cubes => _cubeBalanceStorage;
-        public ICubeDragAndDropBalanceStorage CubeDragAndDropBalanceStorage => _cubeDragAndDropBalanceStorage;
+        public ICubeDragAndDropBalanceStorage CubeDragAndDrop => _cubeDragAndDropBalanceStorage;
+        public ICubeTowerBuildBalanceStorage CubeTowerBuild => _cubeTowerBuildBalanceStorage;
 
         private ICubeBalanceStorage _cubeBalanceStorage;
         private ICubeDragAndDropBalanceStorage _cubeDragAndDropBalanceStorage;
+        private ICubeTowerBuildBalanceStorage _cubeTowerBuildBalanceStorage;
 
         public CubeTowerGameBalanceService()
         {
             _cubeBalanceStorage = new CubeBalanceStorage();
             _cubeDragAndDropBalanceStorage = new CubeDragAndDropBalanceStorage();
+            _cubeTowerBuildBalanceStorage = new CubeTowerBuildBalanceStorage();
         }
 
         protected override HashSet<IProjectService> GetStoragesToInit()
@@ -33,6 +37,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance
             var result = new HashSet<IProjectService>();
             result.Add(_cubeBalanceStorage);
             result.Add(_cubeDragAndDropBalanceStorage);
+            result.Add(_cubeTowerBuildBalanceStorage);
             return result;
         }
     }
