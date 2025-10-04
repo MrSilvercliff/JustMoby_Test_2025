@@ -51,7 +51,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
                 newWidget.transform.ResetLocalPosition();
                 newWidget.transform.ResetLocalRotation();
                 newWidget.transform.ResetLocalScale();
-
+                newWidget.SetActive(true);
                 _widgets.Add(newWidget);
             }
         }

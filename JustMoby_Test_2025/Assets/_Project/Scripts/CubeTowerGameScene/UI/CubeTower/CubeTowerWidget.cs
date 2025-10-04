@@ -16,17 +16,17 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
 
         public void OnCreated()
         {
-            gameObject.SetActive(false);
+            SetActive(false);
         }
 
         public void OnSpawned()
         {
-            gameObject.SetActive(false);
+            SetActive(false);
         }
 
         public void OnDespawned()
         {
-            gameObject.SetActive(false);
+            SetActive(false);
         }
 
         public class Pool : ProjectMonoMemoryPool<CubeTowerWidget> { }

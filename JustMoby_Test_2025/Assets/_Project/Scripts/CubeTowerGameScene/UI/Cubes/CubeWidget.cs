@@ -41,12 +41,12 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
 
         public virtual void OnCreated()
         {
-            gameObject.SetActive(false);
+            SetActive(false);
         }
 
         public virtual void OnDespawned()
         {
-            gameObject.SetActive(false);
+            SetActive(false);
         }
 
         public virtual void OnSpawned()

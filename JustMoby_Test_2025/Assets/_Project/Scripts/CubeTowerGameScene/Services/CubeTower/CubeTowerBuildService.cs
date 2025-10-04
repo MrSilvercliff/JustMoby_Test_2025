@@ -34,6 +34,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
             cubeTower.transform.ResetLocalPosition();
             cubeTower.transform.ResetLocalRotation();
             cubeTower.transform.ResetLocalZ();
+            cubeTower.SetActive(true);
             _repository.Add(cubeTower);
             return true;
         }
