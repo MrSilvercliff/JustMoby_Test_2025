@@ -35,8 +35,11 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
         private bool _dropInProcess;
 
+        private ICubeBalanceModel _cubeBalanceModel;
+
         public void OnDrag(ICubeBalanceModel cubeBalanceModel)
         {
+            _cubeBalanceModel = cubeBalanceModel;
             _inputController.PointerUpEvent += OnPointerUpEvent;
             DragStartEvent?.Invoke(cubeBalanceModel);
         }
@@ -81,10 +84,14 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 2");
 
-            
+            _dropInProcess = true;
 
-            OnDrop();
+            _cubeTowerService.TryBuildTower(cubeTowerBuildAreaWidget.CubeTowerContainer, _cubeBalanceModel);
+
+            DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
+
+            _dropInProcess = false;
         }
     }
 }
