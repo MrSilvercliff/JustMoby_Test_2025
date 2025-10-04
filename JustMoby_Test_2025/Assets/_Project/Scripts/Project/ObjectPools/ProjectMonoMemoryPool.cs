@@ -12,5 +12,17 @@ namespace _Project.Scripts.Project.ObjectPools
             base.OnCreated(item);
             item.OnCreated();
         }
+
+        protected override void OnSpawned(TProjectPoolable item)
+        {
+            base.OnSpawned(item);
+            item.OnSpawned();
+        }
+
+        protected override void OnDespawned(TProjectPoolable item)
+        {
+            base.OnDespawned(item);
+            item.OnDespawned();
+        }
     }
 }
