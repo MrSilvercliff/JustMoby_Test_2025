@@ -12,6 +12,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.ObjectPools
         CubeWidget.Pool CubeWidgetPool { get; }
         CubeScrollDraggableWidget.Pool CubeScrollDraggableWidgetPool { get; }
         CubeTowerWidget.Pool CubeTowerWidgetPool { get; }
+        CubeTowerCubeWidget.Pool CubeTowerCubeWidgetPool { get; }
     }
 
     public class CubeTowerGameSceneObjectPoolService : ICubeTowerGameSceneObjectPoolService
@@ -19,9 +20,11 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.ObjectPools
         public CubeWidget.Pool CubeWidgetPool => _cubeWidgetPool;
         public CubeScrollDraggableWidget.Pool CubeScrollDraggableWidgetPool => _cubeScrollDraggableWidgetPool;
         public CubeTowerWidget.Pool CubeTowerWidgetPool => _cubeTowerWidgetPool;
+        public CubeTowerCubeWidget.Pool CubeTowerCubeWidgetPool => _cubeTowerCubeWidgetPool;
 
         [Inject] private CubeWidget.Pool _cubeWidgetPool;
         [Inject] private CubeScrollDraggableWidget.Pool _cubeScrollDraggableWidgetPool;
         [Inject] private CubeTowerWidget.Pool _cubeTowerWidgetPool;
+        [Inject] private CubeTowerCubeWidget.Pool _cubeTowerCubeWidgetPool;
     }
 }
