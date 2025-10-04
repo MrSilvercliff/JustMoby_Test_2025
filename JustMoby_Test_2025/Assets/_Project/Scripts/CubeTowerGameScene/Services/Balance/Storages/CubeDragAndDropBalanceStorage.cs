@@ -9,15 +9,22 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.Balance.Storages
 {
     public interface ICubeDragAndDropBalanceStorage : IBalanceStorageScriptableObject
     { 
-        float PointerYDeltaToStartDrag { get; }
+        float CubeScrollYDeltaToStartDrag { get; }
+        float CubeTowerDeltaToStartDrag { get; }
+        float CubeTowerDeltaToStartDragSquared { get; }
     }
 
     public class CubeDragAndDropBalanceStorage : BalanceStorageScriptableObject<ICubeTowerGameBalanceConfig, CubeTowerGameBalanceConfig>, ICubeDragAndDropBalanceStorage
     {
-        public float PointerYDeltaToStartDrag => _config.DragAndDropBalanceConfig.PointerYDeltaToStartDrag;
+        public float CubeScrollYDeltaToStartDrag => _config.DragAndDropBalanceConfig.CubeScrollPointerYDeltaToStartDrag;
+        public float CubeTowerDeltaToStartDrag => _config.DragAndDropBalanceConfig.CubeTowerDeltaToStartDrag;
+        public float CubeTowerDeltaToStartDragSquared => _cubeTowerDeltaToStartDragSquared;
+
+        private float _cubeTowerDeltaToStartDragSquared;
 
         protected override Task<bool> OnInit()
         {
+            _cubeTowerDeltaToStartDragSquared = CubeTowerDeltaToStartDrag * CubeTowerDeltaToStartDrag;
             return Task.FromResult(true);
         }
 

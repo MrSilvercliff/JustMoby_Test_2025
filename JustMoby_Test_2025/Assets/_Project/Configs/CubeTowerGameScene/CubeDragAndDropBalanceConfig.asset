@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae8de395be817943af44cbd51940d5f, type: 3}
   m_Name: CubeDragAndDropBalanceConfig
   m_EditorClassIdentifier: 
-  _pointerYDeltaToStartDrag: 20
+  _cubeScrollPointerYDeltaToStartDrag: 30
+  _cubeTowerDeltaToStartDrag: 2
