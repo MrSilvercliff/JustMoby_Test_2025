@@ -8,7 +8,11 @@ using ZerglingUnityPlugins.Tools.Scripts.Log;
 
 namespace _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole
 {
-    public class CubeDeleteHoleWidget : MonoBehaviour, IDropHandler
+    public interface ICubeDeleteHoleWidget : IDropHandler
+    { 
+    }
+
+    public class CubeDeleteHoleWidget : MonoBehaviour, ICubeDeleteHoleWidget
     {
         [SerializeField] private PolygonCollider2D _collider;
 
