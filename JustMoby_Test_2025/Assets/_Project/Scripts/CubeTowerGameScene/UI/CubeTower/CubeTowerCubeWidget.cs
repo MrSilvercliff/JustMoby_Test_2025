@@ -1,3 +1,4 @@
+using _Project.Scripts.CubeTowerGameScene.Services.Balance;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
 using _Project.Scripts.Project.ObjectPools;
@@ -18,21 +19,53 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
         [SerializeField] private UnityEventContainer _onBeginDragEvent;
         [SerializeField] private UnityEventContainer _onEndDragEvent;
 
+        [Inject] private ICubeTowerGameBalanceService _balanceService;
         [Inject] private IGameDragAndDropController _dragAndDropController;
+
+        private bool _isDragging;
+
+        protected override void OnRefreshNull()
+        {
+            base.OnRefreshNull();
+            _dragStateImage.sprite = null;
+        }
+
+        protected override void OnRefreshNotNull()
+        {
+            base.OnRefreshNotNull();
+            _dragStateImage.sprite = _balanceModel.Sprite;
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            _isDragging = false;
+        }
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (_isDragging)
+                return;
+
+            if (eventData.delta.sqrMagnitude < _balanceService.CubeDragAndDrop.CubeTowerDeltaToStartDragSquared)
+                return;
+
+            _isDragging = true;
             _onBeginDragEvent.Event?.Invoke();
         }
 
         public void OnDrop(PointerEventData eventData)
         {
+            _isDragging = false;
             _onEndDragEvent.Event?.Invoke();
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            _isDragging = false;
             _onEndDragEvent.Event?.Invoke();
         }
+
+        public class Pool : ProjectMonoMemoryPool<CubeTowerCubeWidget> { }
     }
 }
