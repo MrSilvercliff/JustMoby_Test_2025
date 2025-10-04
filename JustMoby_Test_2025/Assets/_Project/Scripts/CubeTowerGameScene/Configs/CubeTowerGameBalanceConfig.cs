@@ -10,6 +10,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Configs
     {
         ICubeBalanceConfig CubeBalanceConfig { get; }
         ICubeDragAndDropBalanceConfig DragAndDropBalanceConfig { get; }
+        ICubeTowerBuildBalanceConfig TowerBuildBalanceConfig { get; }
     }
 
     [CreateAssetMenu(fileName = "CubeTowerGameBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Cube Tower Game Balance Config")]
@@ -17,8 +18,10 @@ namespace _Project.Scripts.CubeTowerGameScene.Configs
     {
         public ICubeBalanceConfig CubeBalanceConfig => _cubeBalanceConfig;
         public ICubeDragAndDropBalanceConfig DragAndDropBalanceConfig => _cubeDragAndDropBalanceConfig;
+        public ICubeTowerBuildBalanceConfig TowerBuildBalanceConfig => _cubeTowerBuildBalanceConfig;
 
         [SerializeField] private CubeBalanceConfig _cubeBalanceConfig;
         [SerializeField] private CubeDragAndDropBalanceConfig _cubeDragAndDropBalanceConfig;
+        [SerializeField] private CubeTowerBuildBalanceConfig _cubeTowerBuildBalanceConfig;
     }
 }
