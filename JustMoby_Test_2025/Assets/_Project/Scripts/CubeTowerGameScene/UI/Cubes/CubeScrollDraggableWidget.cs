@@ -45,7 +45,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
             if (_isDragging)
                 return;
 
-            var yDeltaToStartDrag = _balanceService.CubeDragAndDropBalanceStorage.PointerYDeltaToStartDrag;
+            var yDeltaToStartDrag = _balanceService.CubeDragAndDrop.PointerYDeltaToStartDrag;
             var pointerPosition = eventData.position;
             var yDelta = pointerPosition.y - transform.position.y;
 
