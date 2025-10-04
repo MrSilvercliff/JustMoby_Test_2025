@@ -17,6 +17,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
     {
         [Inject] private ICubeTowerRepository _repository;
         [Inject] private ICubeTowerBuildService _buildService;
+        [Inject] private ICubeTowerAddCubeService _addCubeService;
 
         public Task<bool> Init()
         {
@@ -30,7 +31,12 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
 
         public bool TryBuildTower(Transform cubeTowerContainer, ICubeBalanceModel cubeBalanceModel)
         {
-            var result = _buildService.TryBuildTower(cubeTowerContainer);
+            var result = _buildService.TryBuildTower(cubeTowerContainer, out var cubeTowerWidget);
+
+            if (!result)
+                return result;
+
+            result = _addCubeService.TryAddCube(cubeTowerWidget, cubeBalanceModel);
             return result;
         }
     }
