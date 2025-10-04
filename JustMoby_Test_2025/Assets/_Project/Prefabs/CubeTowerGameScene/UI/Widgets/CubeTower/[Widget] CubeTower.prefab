@@ -49,7 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619f0fa2d2e8cc84e903232a6301ab83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _towerCubeContainer: {fileID: 8628187849437091444}
+  _rectTransform: {fileID: 6895361408306647880}
+  _cubeContainer: {fileID: 8628187849437091444}
 --- !u!1 &5075414689012756754
 GameObject:
   m_ObjectHideFlags: 0
