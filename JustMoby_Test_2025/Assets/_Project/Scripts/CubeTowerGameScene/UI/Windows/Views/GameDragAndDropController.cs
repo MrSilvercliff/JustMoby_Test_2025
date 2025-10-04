@@ -1,5 +1,6 @@
 using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
+using _Project.Scripts.CubeTowerGameScene.Services.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
 using System;
@@ -20,8 +21,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         void OnDrag(ICubeBalanceModel cubeBalanceModel);
         
         void OnDrop();
-        void OnDrop(CubeDeleteHoleWidget cubeDeleteHoleWidget);
-        void OnDrop(CubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData);
+        void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget);
+        void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData);
     }
 
     public class GameDragAndDropController : IGameDragAndDropController
@@ -30,6 +31,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         public event Action DragEndEvent;
 
         [Inject] private IInputController _inputController;
+        [Inject] private ICubeTowerService _cubeTowerService;
 
         private bool _dropInProcess;
 
@@ -57,7 +59,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = false;
         }
 
-        public void OnDrop(CubeDeleteHoleWidget cubeDeleteHoleWidget)
+        public void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget)
         {
             LogUtils.Error(this, $"OnDrop Cube Delete Hole Widget 1");
 
@@ -70,7 +72,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _inputController.PointerUpEvent -= OnPointerUpEvent;
         }
 
-        public void OnDrop(CubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData)
+        public void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData)
         {
             LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 1");
 
