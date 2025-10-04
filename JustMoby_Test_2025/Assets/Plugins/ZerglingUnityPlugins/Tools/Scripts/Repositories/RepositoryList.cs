@@ -13,7 +13,7 @@ namespace Plugins.ZerglingUnityPlugins.Tools.Scripts.Repositories
 
     public abstract class RepositoryList<TItem> : IRepositoryList<TItem>
     {
-        public int Count { get; }
+        public int Count => _items.Count;
 
         private List<TItem> _items;
         
