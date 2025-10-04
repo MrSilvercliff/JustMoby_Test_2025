@@ -2,6 +2,7 @@ using _Project.Scripts.CubeTowerGameScene.Configs;
 using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Scene;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
+using _Project.Scripts.CubeTowerGameScene.Services.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
@@ -30,7 +31,14 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
 
             BindDragAndDrop();
 
+            BindCubeTowerServices();
+
             BindSceneServiceIniter();
+        }
+
+        private void BindSceneServiceIniter()
+        {
+            Container.Bind<ICubeTowerGameSceneServiceIniter>().To<CubeTowerGameSceneServiceIniter>().AsSingle();
         }
 
         private void BindObjectPools()
@@ -100,9 +108,12 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
             Container.Bind<IGameDragAndDropController>().To<GameDragAndDropController>().AsSingle();
         }
 
-        private void BindSceneServiceIniter()
+        private void BindCubeTowerServices()
         { 
-            Container.Bind<ICubeTowerGameSceneServiceIniter>().To<CubeTowerGameSceneServiceIniter>().AsSingle();
+            Container.Bind<ICubeTowerRepository>().To<CubeTowerRepository>().AsSingle();
+            Container.Bind<ICubeTowerBuildService>().To<CubeTowerBuildService>().AsSingle();
+            Container.Bind<ICubeTowerAddCubeService>().To<CubeTowerAddCubeService>().AsSingle();
+            Container.Bind<ICubeTowerService>().To<CubeTowerService>().AsSingle();
         }
     }
 }
