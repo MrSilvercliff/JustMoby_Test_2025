@@ -29,12 +29,12 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
                 OnRefreshNotNull();
         }
 
-        private void OnRefreshNull()
+        protected virtual void OnRefreshNull()
         {
             _image.sprite = null;
         }
 
-        private void OnRefreshNotNull()
+        protected virtual void OnRefreshNotNull()
         {
             _image.sprite = _balanceModel.Sprite;
         }
