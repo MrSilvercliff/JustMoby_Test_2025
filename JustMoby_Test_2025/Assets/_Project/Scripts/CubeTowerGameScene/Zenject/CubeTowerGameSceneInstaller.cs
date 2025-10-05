@@ -7,6 +7,7 @@ using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
+using _Project.Scripts.Project.Camera;
 using Assets._Project.Scripts.CubeTowerGameScene.Scene;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,11 +19,14 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
 {
     public class CubeTowerGameSceneInstaller : SceneInstallerBasic
     {
+        [SerializeField] private CameraController _cameraController;
         [SerializeField] private CubeTowerGameSceneObjectPoolContainer _objectPoolContainer;
         [SerializeField] private CubeTowerGameBalanceConfig _balanceConfig;
 
         protected override void OnInstallBindings()
         {
+            BindCamera();
+
             BindObjectPools();
 
             BindBalanceServices();
@@ -39,6 +43,11 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
         private void BindSceneServiceIniter()
         {
             Container.Bind<ICubeTowerGameSceneServiceIniter>().To<CubeTowerGameSceneServiceIniter>().AsSingle();
+        }
+
+        private void BindCamera()
+        { 
+            Container.Bind<ICameraController>().FromInstance(_cameraController).AsSingle();
         }
 
         private void BindObjectPools()
