@@ -58,10 +58,10 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
         {
             AddService(_cubeTowerGameBalanceService);
 
-            AddService(_viewController);
-            AddService(_popupController);
             AddService(_panelSettingsRepository);
             AddService(_panelController);
+            AddService(_popupController);
+            AddService(_viewController);
 
             AddService(_inputController);
 
