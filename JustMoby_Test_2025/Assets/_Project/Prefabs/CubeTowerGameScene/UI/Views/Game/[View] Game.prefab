@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 4586703988313554443}
   - component: {fileID: 2416789932818053623}
   - component: {fileID: 7110791094196868054}
+  - component: {fileID: 8078103072578615756}
   m_Layer: 5
   m_Name: '[View] Game'
   m_TagString: Untagged
@@ -148,6 +149,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _windowGO: {fileID: 3271978824491955970}
+--- !u!114 &8078103072578615756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271978824491955970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638b38047efb27c428a73bcc73cbaba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 909029172098443969}
+  _panel: {fileID: 6729037786288656119, guid: 62a274553dfd37c48bc307e5ac21f15e, type: 3}
+  _config: {fileID: 11400000, guid: 45f961f35ac30c64aaf4985d10e5c6ff, type: 2}
 --- !u!1 &3818174562966027353
 GameObject:
   m_ObjectHideFlags: 0
