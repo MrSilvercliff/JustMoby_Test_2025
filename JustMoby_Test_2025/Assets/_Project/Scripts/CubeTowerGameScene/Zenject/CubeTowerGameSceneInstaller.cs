@@ -35,11 +35,11 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
 
             BindInput();
 
+            BindDOTweenSequenceServices();
+
             BindDragAndDrop();
 
             BindCubeTowerServices();
-
-            BindDOTweenSequenceServices();
 
             BindSceneServiceIniter();
         }
