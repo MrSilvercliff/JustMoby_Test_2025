@@ -224,6 +224,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             if (_cubeBalanceModel != null)
             {
+                // scroll cube
+
                 var tryResult = _cubeTowerService.TryGetCubeTowerByCubeWidget(cubeTowerCubeWidget, out var cubeTowerWidget);
 
                 if (tryResult)
@@ -231,7 +233,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
                     tryResult = _cubeTowerService.TryAddCube(cubeTowerWidget, _cubeBalanceModel);
 
                     if (tryResult)
-                        _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_TOWER_ADD_KEY);
+                        _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_TOWER_ADD_SUCCESS_KEY);
+                    else
+                        _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_TOWER_ADD_FAILED_KEY);
                 }
             }
 
