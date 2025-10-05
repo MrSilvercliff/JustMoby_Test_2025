@@ -4,11 +4,14 @@ using _Project.Scripts.Project.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
 {
     public interface ICubeTowerWidget : IProjectPoolable
     {
+        Transform CubeContainerTopAnchor { get; }
+
         void AddCube(CubeTowerCubeWidget cubeWidget);
         void RemoveCube(CubeTowerCubeWidget cubeWidget);
         bool Contains(CubeTowerCubeWidget cubeWidget);
@@ -16,7 +19,10 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
 
     public class CubeTowerWidget : UIWidget, ICubeTowerWidget
     {
+        public Transform CubeContainerTopAnchor => _cubeContainerTopAnchor;
+
         [SerializeField] private Transform _cubeContainer;
+        [SerializeField] private Transform _cubeContainerTopAnchor;
 
         private List<CubeTowerCubeWidget> _cubes;
 
@@ -56,6 +62,22 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
         {
             var result = _cubes.Contains(cubeWidget);
             return result;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.black;
+
+            if (_cubeContainerTopAnchor != null)
+                Gizmos.DrawCube(_cubeContainerTopAnchor.position, new Vector3(5, 5, 5));
+
+            if (_cubes == null)
+                return;
+
+            foreach (var cube in _cubes)
+            {
+                Gizmos.DrawCube(cube.RectTransform.position, new Vector3(5, 5, 5));
+            }
         }
 
         public class Pool : ProjectMonoMemoryPool<CubeTowerWidget> { }
