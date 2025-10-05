@@ -24,6 +24,14 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
 
         public bool CanAddCube(ICubeTowerWidget cubeTowerWidget)
         {
+            var checkScreenHeightResult = CanAddCubeCheckScreenHeight(cubeTowerWidget);
+            var checkAddingRestrictionsResult = CanAddCubeCheckAddingRestriction();
+            var result = checkScreenHeightResult && checkAddingRestrictionsResult;
+            return result;
+        }
+
+        private bool CanAddCubeCheckScreenHeight(ICubeTowerWidget cubeTowerWidget)
+        {
             var topAnchor = cubeTowerWidget.CubeContainerTopAnchor;
             var topAnchorScreenPos = _cameraController.Camera.WorldToScreenPoint(topAnchor.position);
             var result = topAnchorScreenPos.y < Screen.height;
@@ -34,8 +42,14 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
             Debug.LogError($"top cube top anchor screen pos = {topAnchorScreenPos}");
             Debug.LogError($"result = {result}");
             */
-            
+
             return result;
+        }
+
+        private bool CanAddCubeCheckAddingRestriction()
+        {
+            // check some adding restrictions
+            return true;
         }
 
         public bool TryAddCube(ICubeTowerWidget cubeTowerWidget, ICubeBalanceModel cubeBalanceModel)
