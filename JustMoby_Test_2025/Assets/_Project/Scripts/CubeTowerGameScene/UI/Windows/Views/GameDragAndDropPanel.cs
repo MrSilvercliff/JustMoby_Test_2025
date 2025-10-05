@@ -12,16 +12,21 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 {
     public class GameDragAndDropPanel : MonoBehaviour, IMonoUpdatable
     {
+        [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private RectTransform _draggableObject;
         [SerializeField] private CubeWidget _draggedWidget;
 
         [Inject] private IInputController _inputController;
         [Inject] private IGameDragAndDropController _dragAndDropController;
         [Inject] private IMonoUpdater _monoUpdater;
 
+        private Vector2 _offsetMultiplier;
         private bool _isDragging;
 
         public void Init()
         {
+            var screen = new Vector2(Screen.width, Screen.height);
+            _offsetMultiplier = new Vector2(_rectTransform.rect.width / screen.x, _rectTransform.rect.height / screen.y);
             _isDragging = false;
         }
 
@@ -59,7 +64,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
                 return;
 
             var pointerPosition = _inputController.PointerPosition;
-            _draggedWidget.transform.position = pointerPosition;
+            var anchoredPosition = new Vector2(pointerPosition.x * _offsetMultiplier.x, pointerPosition.y * _offsetMultiplier.y);
+            _draggableObject.anchoredPosition = anchoredPosition;
         }
     }
 }

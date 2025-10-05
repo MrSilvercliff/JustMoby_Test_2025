@@ -47,6 +47,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Input
         public void OnUpdate()
         {
             _pointerPosition = UnityEngine.Input.mousePosition;
+            //Debug.LogError($"_pointerPosition = {_pointerPosition}");
 
             if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
             {
