@@ -42,6 +42,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         private ICubeBalanceModel _cubeBalanceModel;
         private CubeTowerCubeWidget _cubeTowerCubeWidget;
 
+        /// <summary>
+        /// Starting drag some cube from scroll
+        /// </summary>
         public void OnDrag(ICubeBalanceModel cubeBalanceModel)
         {
             _cubeBalanceModel = cubeBalanceModel;
@@ -50,6 +53,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             DragStartEvent?.Invoke(_cubeBalanceModel);
         }
 
+        /// <summary>
+        /// Starting drag some cube from tower
+        /// </summary>
         public void OnDrag(CubeTowerCubeWidget cubeTowerCubeWidget)
         {
             _cubeBalanceModel = null;
@@ -58,6 +64,10 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             DragStartEvent?.Invoke(_cubeTowerCubeWidget.BalanceModel);
         }
 
+        /// <summary>
+        /// Invoking from input Controller
+        /// Look into KeyboardMouseInputController
+        /// </summary>
         private void OnPointerUpEvent(Vector2 vector)
         {
             if (_dropInProcess)
@@ -67,6 +77,11 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             OnDrop(vector);
         }
 
+        /// <summary>
+        /// Simple drop somewhere on screen
+        /// Invokes disappear animation for SCROLL cubes
+        /// Does nothing to TOWER cubes - look like it returns to its place
+        /// </summary>
         public void OnDrop(Vector2 pointerEventDataPosition)
         {
             _inputController.PointerUpEvent -= OnPointerUpEvent;
@@ -87,6 +102,11 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = false;
         }
 
+        /// <summary>
+        /// Drop on cube delete hole
+        /// Invokes cube move to hole dotween animation for SCROLL cubes
+        /// Invokes cube move to hole dotween animation for TOWER cubes
+        /// </summary>
         public void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget, Vector3 pointerEventDataWorldPosition)
         {
             LogUtils.Error(this, $"OnDrop Cube Delete Hole Widget 1");
@@ -106,10 +126,12 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             if (_cubeBalanceModel != null)
             {
+                // scroll cube
                 _doTweenSequenceService.StartCubeMoveToHoleSequence(cubeDeleteHoleWidget, _cubeBalanceModel, pointerEventDataWorldPosition);
             }
             else if (_cubeTowerCubeWidget != null)
             {
+                // tower cube
                 var tryResult = _cubeTowerService.TryGetCubeTowerByCubeWidget(_cubeTowerCubeWidget, out var cubeTowerWidget);
 
                 if (tryResult)
@@ -128,6 +150,11 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = false;
         }
 
+        /// <summary>
+        /// Drop on tower build area (right part of screen with yellow background)
+        /// Invokes tower building in first SCROLL cube dropped
+        /// If tower didnt build - invokes SIMPLE DROP
+        /// </summary>
         public void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData)
         {
             LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 1");
@@ -163,6 +190,11 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = false;
         }
 
+        /// <summary>
+        /// Drop on tower cube
+        /// Invokes adding cube if SCROLL cube was dragged
+        /// Does nothing if TOWER cube was dragged
+        /// </summary>
         public void OnDrop(CubeTowerCubeWidget cubeTowerCubeWidget)
         {
             LogUtils.Error(this, $"OnDrop Cube Tower Cube Widget 1");
@@ -197,8 +229,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = false;
         }
 
-        
-
+        /// <summary>
+        /// Simple check for having dragged object
+        /// </summary>
         private bool HasDraggableObject()
         {
             var cubeBalanceModelExist = _cubeBalanceModel != null;
