@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11bece6349d97442bdb9611fc8ad542, type: 3}
+  m_Name: CubeBalanceConfig
+  m_EditorClassIdentifier: 
+  _allCubeItems:
+  - _id: Cube_1
+    _sprite: {fileID: 21300000, guid: 7e8c3a691f820964cbddeed20b1bda23, type: 3}
+  - _id: Cube_2
+    _sprite: {fileID: 21300000, guid: f6c072bf01cafe54c91eb3d6c31ab445, type: 3}
+  - _id: Cube_3
+    _sprite: {fileID: 21300000, guid: 80792c9f8f770dd428126a96b1df205c, type: 3}
+  - _id: Cube_4
+    _sprite: {fileID: 21300000, guid: 1ba3d440eaa6baf46853995fa437d34c, type: 3}
+  - _id: Cube_5
+    _sprite: {fileID: 21300000, guid: 983c82b57bbed9c42a707f71587a8d7c, type: 3}
+  - _id: Cube_6
+    _sprite: {fileID: 21300000, guid: 87a91d88a4408924085cbd824562f75c, type: 3}
+  - _id: Cube_7
+    _sprite: {fileID: 21300000, guid: 8cdddf5d9ff262746b2de9930fcf44e3, type: 3}
+  - _id: Cube_8
+    _sprite: {fileID: 21300000, guid: 46e427a946d78fe44928d77501e97115, type: 3}
+  - _id: Cube_9
+    _sprite: {fileID: 21300000, guid: f6157f2dbfa7e7441a8d59689bcd7bdf, type: 3}
+  - _id: Cube_10
+    _sprite: {fileID: 21300000, guid: d67862081e0a3e44dbb0995b5f33bd66, type: 3}
+  - _id: Cube_11
+    _sprite: {fileID: 21300000, guid: b11239da681c96a45ad34f4b26c83cdd, type: 3}
+  - _id: Cube_12
+    _sprite: {fileID: 21300000, guid: 796cd4057df158b43a4d38cf23390bad, type: 3}
+  - _id: Cube_13
+    _sprite: {fileID: 21300000, guid: 059f1f66ef46d8e4ea3aacd9b75ff96c, type: 3}
+  - _id: Cube_14
+    _sprite: {fileID: 21300000, guid: e00ca8e4cee86544988b6cfc64ac17cb, type: 3}
+  - _id: Cube_15
+    _sprite: {fileID: 21300000, guid: 6dd1e13cef58d3848893fee840c9e032, type: 3}
+  - _id: Cube_16
+    _sprite: {fileID: 21300000, guid: 5965dc75afc9e944ea32d64bc29965ff, type: 3}
+  - _id: Cube_17
+    _sprite: {fileID: 21300000, guid: 7f7be2a6052b6f6449152931f2f02d83, type: 3}
+  - _id: Cube_18
+    _sprite: {fileID: 21300000, guid: 307b2906d4ed1234abe44142effd7662, type: 3}
+  - _id: Cube_19
+    _sprite: {fileID: 21300000, guid: e77979776211c214cad028b523b9c73f, type: 3}
+  - _id: Cube_20
+    _sprite: {fileID: 21300000, guid: 3a5975312121f0740af73df49907d337, type: 3}
+  _activeCubeItems:
+  - Cube_1
+  - Cube_2
+  - Cube_3
+  - Cube_4
+  - Cube_5
+  - Cube_6
+  - Cube_7
+  - Cube_8
+  - Cube_9
+  - Cube_10
+  - Cube_11
+  - Cube_12
+  - Cube_13
+  - Cube_14
+  - Cube_15
+  - Cube_16
+  - Cube_17
+  - Cube_18
+  - Cube_19
+  - Cube_20

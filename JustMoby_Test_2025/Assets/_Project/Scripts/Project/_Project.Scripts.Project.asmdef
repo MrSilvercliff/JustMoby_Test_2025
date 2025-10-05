@@ -1,0 +1,19 @@
+{
+    "name": "_Project.Scripts.Project",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:53a389b00b4722946bede0ced9941654",
+        "GUID:ea4f11ad9384d1b41b2ed6f8fcdeaef6",
+        "GUID:9d74102a3dab1874d941f8ca6bc00f20"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

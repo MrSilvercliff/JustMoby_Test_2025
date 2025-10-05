@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a71d724b6953014b865f9b33f99aecf, type: 3}
+  m_Name: CubeTowerGameBalanceConfig
+  m_EditorClassIdentifier: 
+  _cubeBalanceConfig: {fileID: 11400000, guid: abfe5d0c542a9f241874ee4ebe4ea875, type: 2}
+  _cubeDragAndDropBalanceConfig: {fileID: 11400000, guid: ed51a644b40b58147b16a8ebdf476757, type: 2}
+  _cubeTowerBuildBalanceConfig: {fileID: 11400000, guid: b6f36dd89f60e5d4099bd2ffaa2d2ca3, type: 2}
