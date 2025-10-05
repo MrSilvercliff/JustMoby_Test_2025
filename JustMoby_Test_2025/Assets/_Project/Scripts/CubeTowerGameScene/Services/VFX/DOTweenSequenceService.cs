@@ -11,8 +11,8 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
         void StartCubeDisappearSequence(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition);
         void StartCubeMoveToHoleSequence();
 
-        void OnSequenceStartPlay(IDOTweenSequenceData sequenceData);
-        void OnSequenceFinished(IDOTweenSequenceData sequenceData);
+        IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas();
+        void Clear();
     }
 
     public class DOTweenSequenceService : IDOTweenSequenceService
@@ -30,15 +30,15 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
         {
         }
 
-        public void OnSequenceStartPlay(IDOTweenSequenceData sequenceData)
+        public IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas()
         {
-            _sequenceDataRepository.Remove(sequenceData);
-            _sequenceDataRepository.AddPlayingSequence(sequenceData);
+            var result = _sequenceDataRepository.GetAll();
+            return result;
         }
 
-        public void OnSequenceFinished(IDOTweenSequenceData sequenceData)
+        public void Clear()
         {
-            _sequenceDataRepository.RemovePlayingSequence(sequenceData);
+            _sequenceDataRepository.Clear();
         }
     }
 }
