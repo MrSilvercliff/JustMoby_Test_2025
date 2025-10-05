@@ -65,6 +65,8 @@ namespace _Project.Scripts.Project.Zenject
 
             BindPanelServices();
 
+            BindLocalizationServices();
+
             BindProjectServiceIniter();
         }
 
