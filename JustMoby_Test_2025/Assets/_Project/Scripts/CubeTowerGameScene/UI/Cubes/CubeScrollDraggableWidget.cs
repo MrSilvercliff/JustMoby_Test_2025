@@ -1,5 +1,6 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
+using _Project.Scripts.Project.Camera;
 using _Project.Scripts.Project.ObjectPools;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
     {
         [Inject] private ICubeTowerGameBalanceService _balanceService;
         [Inject] private IGameDragAndDropController _dragAndDropController;
+        [Inject] private ICameraController _cameraController;
 
         private ScrollRect _scrollRect;
         private bool _isDragging;
@@ -47,7 +49,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
 
             var yDeltaToStartDrag = _balanceService.CubeDragAndDrop.CubeScrollYDeltaToStartDrag;
             var pointerPosition = eventData.position;
-            var yDelta = pointerPosition.y - transform.position.y;
+            var pointerWorldPosition = _cameraController.Camera.ScreenToWorldPoint(pointerPosition);
+            var yDelta = pointerWorldPosition.y - transform.position.y;
 
             if (yDelta > yDeltaToStartDrag)
             {
