@@ -1,4 +1,5 @@
 using _Project.Scripts.Project.Configs.Windows;
+using _Project.Scripts.Project.Handlers.Localization;
 using _Project.Scripts.Project.Handlers.SceneLoading;
 using _Project.Scripts.Project.Handlers.UI.Panels;
 using _Project.Scripts.Project.Handlers.UI.Popups;
@@ -12,6 +13,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using ZerglingUnityPlugins.Localization_JSON_Object.Scripts;
+using ZerglingUnityPlugins.Localization_Total_JSON.Scripts;
 using ZerglingUnityPlugins.Tools.Scripts.Mono;
 using ZerglingUnityPlugins.WindowsManagerAsync.Scripts.Configs;
 using ZerglingUnityPlugins.WindowsManagerAsync.Scripts.Popups;
@@ -38,6 +41,9 @@ namespace _Project.Scripts.Project.Zenject
         [Header("PANELS")]
         [SerializeField] private PanelConfig _panelConfig;
         [SerializeField] private PanelController _panelController;
+
+        [Header("CONFIGS")]
+        [SerializeField] private LocalizationConfig _localizationConfig;
 
         public override void InstallBindings()
         {
@@ -102,6 +108,13 @@ namespace _Project.Scripts.Project.Zenject
             Container.Bind<IPanelSettingsRepository>().To<PanelSettingsRepository>().AsSingle();
             Container.Bind<IPanelHandler>().To<PanelHandler>().AsSingle();
             Container.Bind<IPanelController>().FromInstance(_panelController).AsSingle();
+        }
+
+        private void BindLocalizationServices()
+        {
+            Container.Bind<ILocalizationConfig>().FromInstance(_localizationConfig).AsSingle();
+            Container.Bind<ILocalizationServiceHandler>().To<LocalizationServiceHandler>().AsSingle();
+            Container.Bind<ILocalizationService>().To<LocalizationService>().AsSingle();
         }
 
         private void BindProjectServiceIniter()
