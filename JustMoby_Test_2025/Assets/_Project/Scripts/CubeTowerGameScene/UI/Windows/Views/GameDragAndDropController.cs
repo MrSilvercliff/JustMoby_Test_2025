@@ -126,14 +126,33 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
         public void OnDrop(CubeTowerCubeWidget cubeTowerCubeWidget)
         {
+            LogUtils.Error(this, $"OnDrop Cube Tower Cube Widget 1");
+
             if (!HasDraggableObject())
             {
                 _inputController.PointerUpEvent -= OnPointerUpEvent;
                 return;
             }
 
-            OnDrop();
+            if (_dropInProcess)
+                return;
+
+            _dropInProcess = true;
+
+            LogUtils.Error(this, $"OnDrop Cube Tower Cube Widget 2");
+
+            if (_cubeBalanceModel != null)
+            {
+                var tryResult = _cubeTowerService.TryGetCubeTowerByCubeWidget(cubeTowerCubeWidget, out var cubeTowerWidget);
+
+                if (tryResult)
+                    _cubeTowerService.TryAddCube(cubeTowerWidget, _cubeBalanceModel);
+            }
+
+            DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
+
+            _dropInProcess = false;
         }
 
         private bool HasDraggableObject()

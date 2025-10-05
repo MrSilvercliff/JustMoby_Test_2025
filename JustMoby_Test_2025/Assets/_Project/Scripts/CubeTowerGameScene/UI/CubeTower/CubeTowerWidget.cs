@@ -11,6 +11,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
     {
         void AddCube(CubeTowerCubeWidget cubeWidget);
         void RemoveCube(CubeTowerCubeWidget cubeWidget);
+        bool Contains(CubeTowerCubeWidget cubeWidget);
     }
 
     public class CubeTowerWidget : UIWidget, ICubeTowerWidget
@@ -49,6 +50,12 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
         public void RemoveCube(CubeTowerCubeWidget cubeWidget)
         {
             _cubes.Remove(cubeWidget);
+        }
+
+        public bool Contains(CubeTowerCubeWidget cubeWidget)
+        {
+            var result = _cubes.Contains(cubeWidget);
+            return result;
         }
 
         public class Pool : ProjectMonoMemoryPool<CubeTowerWidget> { }

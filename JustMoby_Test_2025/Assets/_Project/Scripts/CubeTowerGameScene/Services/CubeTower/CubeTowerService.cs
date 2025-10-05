@@ -1,4 +1,5 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
+using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
 {
     public interface ICubeTowerService : IProjectService
     {
+        bool TryGetCubeTowerByCubeWidget(CubeTowerCubeWidget cubeWidget, out ICubeTowerWidget cubeTowerWidget);
         bool TryBuildTower(Transform cubeTowerContainer, ICubeBalanceModel cubeBalanceModel);
+        bool TryAddCube(ICubeTowerWidget cubeTower, ICubeBalanceModel cubeBalanceModel);
     }
 
     public class CubeTowerService : ICubeTowerService
@@ -29,6 +32,12 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
             return true;
         }
 
+        public bool TryGetCubeTowerByCubeWidget(CubeTowerCubeWidget cubeWidget, out ICubeTowerWidget cubeTowerWidget)
+        {
+            var result = _repository.TryGetCubeTowerByCubeWidget(cubeWidget, out cubeTowerWidget);
+            return result;
+        }
+
         public bool TryBuildTower(Transform cubeTowerContainer, ICubeBalanceModel cubeBalanceModel)
         {
             var result = _buildService.TryBuildTower(cubeTowerContainer, out var cubeTowerWidget);
@@ -37,6 +46,12 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
                 return result;
 
             result = _addCubeService.TryAddCube(cubeTowerWidget, cubeBalanceModel);
+            return result;
+        }
+
+        public bool TryAddCube(ICubeTowerWidget cubeTowerWidget, ICubeBalanceModel cubeBalanceModel)
+        {
+            var result = _addCubeService.TryAddCube(cubeTowerWidget, cubeBalanceModel);
             return result;
         }
     }

@@ -53,12 +53,14 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
             if (eventData.delta.sqrMagnitude < _balanceService.CubeDragAndDrop.CubeTowerDeltaToStartDragSquared)
                 return;
 
+            _dragAndDropController.OnDrag(this);
             _isDragging = true;
             _onBeginDragEvent.Event?.Invoke();
         }
 
         public void OnDrop(PointerEventData eventData)
         {
+            _dragAndDropController.OnDrop(this);
             _isDragging = false;
             _onEndDragEvent.Event?.Invoke();
         }
