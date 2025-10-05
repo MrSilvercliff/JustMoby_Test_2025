@@ -2,8 +2,10 @@ using _Project.Scripts.CubeTowerGameScene.Configs;
 using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Scene;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
+using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
 using _Project.Scripts.CubeTowerGameScene.Services.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
+using _Project.Scripts.CubeTowerGameScene.Services.VFX;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
@@ -36,6 +38,8 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
             BindDragAndDrop();
 
             BindCubeTowerServices();
+
+            BindDOTweenSequenceServices();
 
             BindSceneServiceIniter();
         }
@@ -138,6 +142,15 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
             Container.Bind<ICubeTowerBuildService>().To<CubeTowerBuildService>().AsSingle();
             Container.Bind<ICubeTowerAddCubeService>().To<CubeTowerAddCubeService>().AsSingle();
             Container.Bind<ICubeTowerService>().To<CubeTowerService>().AsSingle();
+        }
+
+        private void BindDOTweenSequenceServices()
+        {
+            Container.BindFactory<ICubeBalanceModel, Vector2, CubeDisappearDOTweenSequenceData, CubeDisappearDOTweenSequenceData.Factory>();
+
+            Container.Bind<IDOTweenSequenceDataCreator>().To<DOTweenSequenceDataCreator>().AsSingle();
+            Container.Bind<IDOTweenSequenceDataRepository>().To<DOTweenSequenceDataRepository>().AsSingle();
+            Container.Bind<IDOTweenSequenceService>().To<DOTweenSequenceService>().AsSingle();
         }
     }
 }
