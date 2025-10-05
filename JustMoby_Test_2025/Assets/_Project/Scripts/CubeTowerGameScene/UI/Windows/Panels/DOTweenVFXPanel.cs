@@ -1,3 +1,4 @@
+using _Project.Scripts.CubeTowerGameScene.Enums;
 using _Project.Scripts.CubeTowerGameScene.Services.VFX;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Panels
     public class DOTweenVFXPanel : PanelWindowWithSafeArea, IMonoLateUpdatable
     {
         [SerializeField] private CubeDisappearDOTweenPanel _cubeDisappearPanel;
+        [SerializeField] private CubeMoveToHoleDOTweenPanel _cubeMoveToHolePanel;
 
         [Inject] private IMonoUpdater _monoUpdater;
         [Inject] private IDOTweenSequenceService _sequenceService;
@@ -39,8 +41,12 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Panels
 
                 switch (sequenceType)
                 {
-                    case Enums.DOTweenSequenceType.Cube_Disappear:
+                    case DOTweenSequenceType.Cube_Disappear:
                         playResult = _cubeDisappearPanel.PlaySequence(sequenceData);
+                        break;
+
+                    case DOTweenSequenceType.Cube_Move_To_Hole:
+                        playResult = _cubeMoveToHolePanel.PlaySequence(sequenceData);
                         break;
                 }
             }

@@ -6,6 +6,7 @@ using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
 using _Project.Scripts.CubeTowerGameScene.Services.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
 using _Project.Scripts.CubeTowerGameScene.Services.VFX;
+using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
@@ -147,6 +148,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
         private void BindDOTweenSequenceServices()
         {
             Container.BindFactory<ICubeBalanceModel, Vector2, CubeDisappearDOTweenSequenceData, CubeDisappearDOTweenSequenceData.Factory>();
+            Container.BindFactory<ICubeDeleteHoleWidget, ICubeBalanceModel, Vector3, CubeMoveToHoleDOTweenSequenceData, CubeMoveToHoleDOTweenSequenceData.Factory>();
 
             Container.Bind<IDOTweenSequenceDataCreator>().To<DOTweenSequenceDataCreator>().AsSingle();
             Container.Bind<IDOTweenSequenceDataRepository>().To<DOTweenSequenceDataRepository>().AsSingle();

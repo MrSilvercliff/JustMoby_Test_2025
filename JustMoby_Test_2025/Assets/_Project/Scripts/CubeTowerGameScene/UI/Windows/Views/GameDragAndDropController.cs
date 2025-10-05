@@ -23,7 +23,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         void OnDrag(CubeTowerCubeWidget cubeTowerCubeWidget);
 
         void OnDrop(Vector2 pointerEventDataPosition);
-        void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget);
+        void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget, Vector3 pointerEventDataWorldPosition);
         void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData);
         void OnDrop(CubeTowerCubeWidget cubeTowerCubeWidget);
     }
@@ -87,7 +87,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = false;
         }
 
-        public void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget)
+        public void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget, Vector3 pointerEventDataWorldPosition)
         {
             LogUtils.Error(this, $"OnDrop Cube Delete Hole Widget 1");
 
@@ -106,13 +106,17 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             if (_cubeBalanceModel != null)
             {
+                _doTweenSequenceService.StartCubeMoveToHoleSequence(cubeDeleteHoleWidget, _cubeBalanceModel, pointerEventDataWorldPosition);
             }
             else if (_cubeTowerCubeWidget != null)
             {
                 var tryResult = _cubeTowerService.TryGetCubeTowerByCubeWidget(_cubeTowerCubeWidget, out var cubeTowerWidget);
 
                 if (tryResult)
+                {
+                    _doTweenSequenceService.StartCubeMoveToHoleSequence(cubeDeleteHoleWidget, _cubeTowerCubeWidget.BalanceModel, _cubeTowerCubeWidget.transform.position);
                     _cubeTowerService.RemoveCube(cubeTowerWidget, _cubeTowerCubeWidget);
+                }
             }
 
             DragEndEvent?.Invoke();

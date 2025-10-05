@@ -35,7 +35,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole
             var overlap = _collider.OverlapPoint(worldPosition);
 
             if (overlap)
-                _dragAndDropController.OnDrop(this);
+                _dragAndDropController.OnDrop(this, worldPosition);
             else
                 _dragAndDropController.OnDrop(eventData.position);
         }

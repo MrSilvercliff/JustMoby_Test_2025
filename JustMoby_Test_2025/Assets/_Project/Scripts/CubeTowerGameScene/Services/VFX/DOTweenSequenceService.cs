@@ -1,4 +1,5 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
+using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
     public interface IDOTweenSequenceService
     {
         void StartCubeDisappearSequence(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition);
-        void StartCubeMoveToHoleSequence();
+        void StartCubeMoveToHoleSequence(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition);
 
         IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas();
         void Clear();
@@ -26,8 +27,10 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
             _sequenceDataRepository.Add(data);
         }
 
-        public void StartCubeMoveToHoleSequence()
+        public void StartCubeMoveToHoleSequence(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition)
         {
+            var data = _sequenceDataCreator.CreateSequenceData(cubeDeleteHoleWidget, cubeBalanceModel, startWorldPosition);
+            _sequenceDataRepository.Add(data);
         }
 
         public IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas()

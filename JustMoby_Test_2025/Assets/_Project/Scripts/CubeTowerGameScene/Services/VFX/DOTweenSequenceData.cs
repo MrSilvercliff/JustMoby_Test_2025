@@ -1,5 +1,6 @@
 using _Project.Scripts.CubeTowerGameScene.Enums;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
+using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,5 +32,23 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
         }
 
         public class Factory : PlaceholderFactory<ICubeBalanceModel, Vector2, CubeDisappearDOTweenSequenceData> { }
+    }
+
+    public class CubeMoveToHoleDOTweenSequenceData : DOTweenSequenceData
+    {
+        public override DOTweenSequenceType SequenceType => DOTweenSequenceType.Cube_Move_To_Hole;
+
+        public ICubeDeleteHoleWidget CubeDeleteHoleWidget { get; private set; }
+        public ICubeBalanceModel CubeBalanceModel { get; private set; }
+        public Vector3 StartWorldPosition { get; private set; }
+
+        public CubeMoveToHoleDOTweenSequenceData(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition)
+        {
+            CubeDeleteHoleWidget = cubeDeleteHoleWidget;
+            CubeBalanceModel = cubeBalanceModel;
+            StartWorldPosition = startWorldPosition;
+        }
+
+        public class Factory : PlaceholderFactory<ICubeDeleteHoleWidget, ICubeBalanceModel, Vector3, CubeMoveToHoleDOTweenSequenceData> { }
     }
 }
