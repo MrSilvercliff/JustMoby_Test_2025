@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PanelConfig
   m_EditorClassIdentifier: 
   _projectPanels: []
-  _brickTowerGameScenePanels: []
+  _brickTowerGameScenePanels:
+  - {fileID: 6729037786288656119, guid: 62a274553dfd37c48bc307e5ac21f15e, type: 3}
