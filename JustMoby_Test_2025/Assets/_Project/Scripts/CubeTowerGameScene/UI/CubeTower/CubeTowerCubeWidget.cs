@@ -1,4 +1,5 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
+using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
 using _Project.Scripts.CubeTowerGameScene.UI.Cubes;
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
 using _Project.Scripts.Project.ObjectPools;
@@ -15,6 +16,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
 {
     public class CubeTowerCubeWidget : CubeWidget, IDragHandler, IDropHandler, IEndDragHandler
     {
+        public ICubeBalanceModel BalanceModel => _balanceModel;
+
         [SerializeField] private Image _dragStateImage;
         [SerializeField] private UnityEventContainer _onBeginDragEvent;
         [SerializeField] private UnityEventContainer _onEndDragEvent;
