@@ -13,7 +13,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Configs
         ICubeTowerBuildBalanceConfig TowerBuildBalanceConfig { get; }
     }
 
-    [CreateAssetMenu(fileName = "CubeTowerGameBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Cube Tower Game Balance Config")]
+    [CreateAssetMenu(fileName = "CubeTowerGameBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Balance/Cube Tower Game Balance Config")]
     public class CubeTowerGameBalanceConfig : ScriptableObject, ICubeTowerGameBalanceConfig
     {
         public ICubeBalanceConfig CubeBalanceConfig => _cubeBalanceConfig;

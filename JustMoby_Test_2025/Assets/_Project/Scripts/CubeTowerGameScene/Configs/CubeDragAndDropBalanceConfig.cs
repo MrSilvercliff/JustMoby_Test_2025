@@ -10,7 +10,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Configs
         float CubeTowerDeltaToStartDrag { get; }
     }
 
-    [CreateAssetMenu(fileName = "CubeDragAndDropBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Cube Drag And Drop Balance Config")]
+    [CreateAssetMenu(fileName = "CubeDragAndDropBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Balance/Cube Drag And Drop Balance Config")]
     public class CubeDragAndDropBalanceConfig : ScriptableObject, ICubeDragAndDropBalanceConfig
     {
         public float CubeScrollPointerYDeltaToStartDrag => _cubeScrollPointerYDeltaToStartDrag;

@@ -12,7 +12,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Configs
         IReadOnlyCollection<string> ActiveCubeItems { get; }
     }
 
-    [CreateAssetMenu(fileName = "CubeBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Cube Balance Config")]
+    [CreateAssetMenu(fileName = "CubeBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Balance/Cube Balance Config")]
     public class CubeBalanceConfig : ScriptableObject, ICubeBalanceConfig
     {
         public IReadOnlyCollection<CubeBalanceConfigItem> AllCubeItems => _allCubeItems;

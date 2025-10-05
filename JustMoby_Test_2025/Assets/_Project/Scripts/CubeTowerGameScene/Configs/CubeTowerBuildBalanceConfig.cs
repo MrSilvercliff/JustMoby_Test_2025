@@ -9,7 +9,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Configs
         int MaxActiveTowerCount { get; }
     }
 
-    [CreateAssetMenu(fileName = "CubeTowerBuildBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Cube Tower Build Balance Config")]
+    [CreateAssetMenu(fileName = "CubeTowerBuildBalanceConfig", menuName = "Project/Configs/Cube Tower Game/Balance/Cube Tower Build Balance Config")]
     public class CubeTowerBuildBalanceConfig : ScriptableObject, ICubeTowerBuildBalanceConfig
     {
         public int MaxActiveTowerCount => _maxActiveTowerCount;
