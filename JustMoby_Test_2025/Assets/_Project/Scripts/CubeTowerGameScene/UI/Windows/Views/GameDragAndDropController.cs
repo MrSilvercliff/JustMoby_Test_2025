@@ -4,6 +4,7 @@ using _Project.Scripts.CubeTowerGameScene.Services.CubeTower;
 using _Project.Scripts.CubeTowerGameScene.Services.VFX;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
+using _Project.Scripts.Project.Services.Localization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -73,7 +74,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             if (_dropInProcess)
                 return;
 
-            LogUtils.Error(this, $"OnDrop OnPointerUpEvent");
+            LogUtils.Info(this, $"OnDrop OnPointerUpEvent");
             OnDrop(vector);
         }
 
@@ -92,7 +93,10 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             _dropInProcess = true;
 
             if (_cubeBalanceModel != null)
+            {
                 _doTweenSequenceService.StartCubeDisappearSequence(_cubeBalanceModel, pointerEventDataPosition);
+                _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_DISAPPEAR_KEY);
+            }
 
             DragEndEvent?.Invoke();
 
@@ -109,7 +113,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         /// </summary>
         public void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget, Vector3 pointerEventDataWorldPosition)
         {
-            LogUtils.Error(this, $"OnDrop Cube Delete Hole Widget 1");
+            LogUtils.Info(this, $"OnDrop Cube Delete Hole Widget 1");
 
             if (!HasDraggableObject())
             {
@@ -120,7 +124,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             if (_dropInProcess)
                 return;
 
-            LogUtils.Error(this, $"OnDrop Cube Delete Hole Widget 2");
+            LogUtils.Info(this, $"OnDrop Cube Delete Hole Widget 2");
 
             _dropInProcess = true;
 
@@ -128,6 +132,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             {
                 // scroll cube
                 _doTweenSequenceService.StartCubeMoveToHoleSequence(cubeDeleteHoleWidget, _cubeBalanceModel, pointerEventDataWorldPosition);
+                _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_MOVE_TO_HOLE_KEY);
             }
             else if (_cubeTowerCubeWidget != null)
             {
@@ -137,6 +142,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
                 if (tryResult)
                 {
                     _doTweenSequenceService.StartCubeMoveToHoleSequence(cubeDeleteHoleWidget, _cubeTowerCubeWidget.BalanceModel, _cubeTowerCubeWidget.transform.position);
+                    _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_MOVE_TO_HOLE_KEY);
                     _cubeTowerService.RemoveCube(cubeTowerWidget, _cubeTowerCubeWidget);
                 }
             }
@@ -157,7 +163,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         /// </summary>
         public void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData)
         {
-            LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 1");
+            LogUtils.Info(this, $"OnDrop Cube Tower Build Area Widget 1");
 
             if (!HasDraggableObject())
             {
@@ -168,15 +174,19 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             if (_dropInProcess)
                 return;
 
-            LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 2");
+            LogUtils.Info(this, $"OnDrop Cube Tower Build Area Widget 2");
 
             _dropInProcess = true;
 
             var tryBuildResult = _cubeTowerService.TryBuildTower(cubeTowerBuildAreaWidget.CubeTowerContainer, _cubeBalanceModel);
 
-            if (!tryBuildResult)
+            if (tryBuildResult)
+            { 
+                _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_TOWER_BUILD_KEY);
+            }
+            else
             {
-                LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 3");
+                LogUtils.Info(this, $"OnDrop Cube Tower Build Area Widget 3");
                 OnDrop(pointerEventData.position);
                 return;
             }
@@ -197,7 +207,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         /// </summary>
         public void OnDrop(CubeTowerCubeWidget cubeTowerCubeWidget)
         {
-            LogUtils.Error(this, $"OnDrop Cube Tower Cube Widget 1");
+            LogUtils.Info(this, $"OnDrop Cube Tower Cube Widget 1");
 
             if (!HasDraggableObject())
             {
@@ -210,14 +220,19 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             _dropInProcess = true;
 
-            LogUtils.Error(this, $"OnDrop Cube Tower Cube Widget 2");
+            LogUtils.Info(this, $"OnDrop Cube Tower Cube Widget 2");
 
             if (_cubeBalanceModel != null)
             {
                 var tryResult = _cubeTowerService.TryGetCubeTowerByCubeWidget(cubeTowerCubeWidget, out var cubeTowerWidget);
 
                 if (tryResult)
-                    _cubeTowerService.TryAddCube(cubeTowerWidget, _cubeBalanceModel);
+                {
+                    tryResult = _cubeTowerService.TryAddCube(cubeTowerWidget, _cubeBalanceModel);
+
+                    if (tryResult)
+                        _doTweenSequenceService.StartShowTextSequence(LocalizationHelper.CUBE_TOWER_ADD_KEY);
+                }
             }
 
             DragEndEvent?.Invoke();

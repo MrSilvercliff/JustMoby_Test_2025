@@ -149,6 +149,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Zenject
         {
             Container.BindFactory<ICubeBalanceModel, Vector2, CubeDisappearDOTweenSequenceData, CubeDisappearDOTweenSequenceData.Factory>();
             Container.BindFactory<ICubeDeleteHoleWidget, ICubeBalanceModel, Vector3, CubeMoveToHoleDOTweenSequenceData, CubeMoveToHoleDOTweenSequenceData.Factory>();
+            Container.BindFactory<string, ShowTextDOTweenSequenceData, ShowTextDOTweenSequenceData.Factory>();
 
             Container.Bind<IDOTweenSequenceDataCreator>().To<DOTweenSequenceDataCreator>().AsSingle();
             Container.Bind<IDOTweenSequenceDataRepository>().To<DOTweenSequenceDataRepository>().AsSingle();

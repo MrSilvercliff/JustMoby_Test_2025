@@ -51,4 +51,18 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
 
         public class Factory : PlaceholderFactory<ICubeDeleteHoleWidget, ICubeBalanceModel, Vector3, CubeMoveToHoleDOTweenSequenceData> { }
     }
+
+    public class ShowTextDOTweenSequenceData : DOTweenSequenceData
+    {
+        public override DOTweenSequenceType SequenceType => DOTweenSequenceType.Show_Text;
+
+        public string TextLocalizationKey { get; private set; }
+
+        public ShowTextDOTweenSequenceData(string textLocalizationKey)
+        {
+            TextLocalizationKey = textLocalizationKey;
+        }
+
+        public class Factory : PlaceholderFactory<string, ShowTextDOTweenSequenceData> { }
+    }
 }

@@ -9,17 +9,29 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
 {
     public interface IDOTweenSequenceService
     {
-        void StartCubeDisappearSequence(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition);
-        void StartCubeMoveToHoleSequence(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition);
-
         IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas();
         void Clear();
+
+        void StartCubeDisappearSequence(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition);
+        void StartCubeMoveToHoleSequence(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition);
+        void StartShowTextSequence(string textLocaleKey);
     }
 
     public class DOTweenSequenceService : IDOTweenSequenceService
     {
         [Inject] private IDOTweenSequenceDataRepository _sequenceDataRepository;
         [Inject] private IDOTweenSequenceDataCreator _sequenceDataCreator;
+
+        public IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas()
+        {
+            var result = _sequenceDataRepository.GetAll();
+            return result;
+        }
+
+        public void Clear()
+        {
+            _sequenceDataRepository.Clear();
+        }
 
         public void StartCubeDisappearSequence(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition)
         {
@@ -33,15 +45,10 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
             _sequenceDataRepository.Add(data);
         }
 
-        public IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas()
+        public void StartShowTextSequence(string textLocaleKey)
         {
-            var result = _sequenceDataRepository.GetAll();
-            return result;
-        }
-
-        public void Clear()
-        {
-            _sequenceDataRepository.Clear();
+            var data = _sequenceDataCreator.CreateSequenceData(textLocaleKey);
+            _sequenceDataRepository.Add(data);
         }
     }
 }

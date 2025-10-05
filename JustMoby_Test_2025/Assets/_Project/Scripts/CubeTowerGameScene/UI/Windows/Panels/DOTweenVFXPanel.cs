@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
+using ZerglingUnityPlugins.Tools.Scripts.Log;
 using ZerglingUnityPlugins.Tools.Scripts.Mono;
 using ZerglingUnityPlugins.WindowsManagerAsync.Scripts.Panels;
 
@@ -14,6 +15,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Panels
     {
         [SerializeField] private CubeDisappearDOTweenPanel _cubeDisappearPanel;
         [SerializeField] private CubeMoveToHoleDOTweenPanel _cubeMoveToHolePanel;
+        [SerializeField] private ShowTextDOTweenPanel _showTextPanel;
 
         [Inject] private IMonoUpdater _monoUpdater;
         [Inject] private IDOTweenSequenceService _sequenceService;
@@ -47,6 +49,14 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Panels
 
                     case DOTweenSequenceType.Cube_Move_To_Hole:
                         playResult = _cubeMoveToHolePanel.PlaySequence(sequenceData);
+                        break;
+
+                    case DOTweenSequenceType.Show_Text:
+                        playResult = _showTextPanel.PlaySequence(sequenceData);
+                        break;
+
+                    default:
+                        LogUtils.Error(this, $"Play sequence does not implemented for [{sequenceType}]!");
                         break;
                 }
             }

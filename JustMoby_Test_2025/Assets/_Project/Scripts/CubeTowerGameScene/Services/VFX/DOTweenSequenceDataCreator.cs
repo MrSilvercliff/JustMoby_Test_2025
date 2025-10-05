@@ -11,12 +11,14 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
     {
         IDOTweenSequenceData CreateSequenceData(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition);
         IDOTweenSequenceData CreateSequenceData(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition);
+        IDOTweenSequenceData CreateSequenceData(string textLocaleKey);
     }
 
     public class DOTweenSequenceDataCreator : IDOTweenSequenceDataCreator
     {
         [Inject] private CubeDisappearDOTweenSequenceData.Factory _cubeDisappearFactory;
         [Inject] private CubeMoveToHoleDOTweenSequenceData.Factory _cubeMoveToHoleFactory;
+        [Inject] private ShowTextDOTweenSequenceData.Factory _showTextFactory;
 
         public IDOTweenSequenceData CreateSequenceData(ICubeBalanceModel cubeBalanceModel, Vector2 eventDataPointerPosition)
         {
@@ -27,6 +29,12 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
         public IDOTweenSequenceData CreateSequenceData(ICubeDeleteHoleWidget cubeDeleteHoleWidget, ICubeBalanceModel cubeBalanceModel, Vector3 startWorldPosition)
         {
             var result = _cubeMoveToHoleFactory.Create(cubeDeleteHoleWidget, cubeBalanceModel, startWorldPosition);
+            return result;
+        }
+
+        public IDOTweenSequenceData CreateSequenceData(string textLocaleKey)
+        {
+            var result = _showTextFactory.Create(textLocaleKey);
             return result;
         }
     }

@@ -24,8 +24,6 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
 
         public void OnDrop(PointerEventData eventData)
         {
-            LogUtils.Error(this, $"OnDrop");
-
             _gameDragAndDropController.OnDrop(this, eventData);
         }
     }
