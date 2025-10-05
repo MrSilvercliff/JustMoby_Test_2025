@@ -14,6 +14,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
         bool TryGetCubeTowerByCubeWidget(CubeTowerCubeWidget cubeWidget, out ICubeTowerWidget cubeTowerWidget);
         bool TryBuildTower(Transform cubeTowerContainer, ICubeBalanceModel cubeBalanceModel);
         bool TryAddCube(ICubeTowerWidget cubeTower, ICubeBalanceModel cubeBalanceModel);
+        void RemoveCube(ICubeTowerWidget cubeTower, CubeTowerCubeWidget cubeWidget);
     }
 
     public class CubeTowerService : ICubeTowerService
@@ -53,6 +54,16 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
         {
             var result = _addCubeService.TryAddCube(cubeTowerWidget, cubeBalanceModel);
             return result;
+        }
+
+        public void RemoveCube(ICubeTowerWidget cubeTower, CubeTowerCubeWidget cubeWidget)
+        {
+            _addCubeService.RemoveCube(cubeTower, cubeWidget);
+
+            if (cubeTower.CubeCount > 0)
+                return;
+
+            _buildService.DestroyTower(cubeTower);
         }
     }
 }

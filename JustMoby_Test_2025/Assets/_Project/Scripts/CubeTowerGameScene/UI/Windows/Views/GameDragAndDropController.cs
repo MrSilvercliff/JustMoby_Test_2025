@@ -95,8 +95,23 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             LogUtils.Error(this, $"OnDrop Cube Delete Hole Widget 2");
 
-            OnDrop();
+            _dropInProcess = true;
+
+            if (_cubeBalanceModel != null)
+            {
+            }
+            else if (_cubeTowerCubeWidget != null)
+            {
+                var tryResult = _cubeTowerService.TryGetCubeTowerByCubeWidget(_cubeTowerCubeWidget, out var cubeTowerWidget);
+
+                if (tryResult)
+                    _cubeTowerService.RemoveCube(cubeTowerWidget, _cubeTowerCubeWidget);
+            }
+
+            DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
+
+            _dropInProcess = false;
         }
 
         public void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData)

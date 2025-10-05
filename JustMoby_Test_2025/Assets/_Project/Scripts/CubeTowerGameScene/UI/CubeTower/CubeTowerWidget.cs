@@ -12,6 +12,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
     {
         Transform CubeContainerTopAnchor { get; }
 
+        int CubeCount { get; }
         void AddCube(CubeTowerCubeWidget cubeWidget);
         void RemoveCube(CubeTowerCubeWidget cubeWidget);
         bool Contains(CubeTowerCubeWidget cubeWidget);
@@ -20,6 +21,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
     public class CubeTowerWidget : UIWidget, ICubeTowerWidget
     {
         public Transform CubeContainerTopAnchor => _cubeContainerTopAnchor;
+        public int CubeCount => _cubes.Count;
 
         [SerializeField] private Transform _cubeContainer;
         [SerializeField] private Transform _cubeContainerTopAnchor;

@@ -45,6 +45,14 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeTower
             _isDragging = false;
         }
 
+        public override void OnSpawned()
+        {
+            base.OnSpawned();
+            _isDragging = false;
+            _image.gameObject.SetActive(true);
+            _dragStateImage.gameObject.SetActive(false);
+        }
+
         public void OnDrag(PointerEventData eventData)
         {
             if (_isDragging)

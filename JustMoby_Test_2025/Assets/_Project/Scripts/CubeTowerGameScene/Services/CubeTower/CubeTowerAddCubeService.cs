@@ -14,6 +14,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
     { 
         bool CanAddCube(ICubeTowerWidget cubeTowerWidget);
         bool TryAddCube(ICubeTowerWidget cubeTowerWidget, ICubeBalanceModel cubeBalanceModel);
+        void RemoveCube(ICubeTowerWidget cubeTowerWidget, CubeTowerCubeWidget cubeWidget);
     }
 
     public class CubeTowerAddCubeService : ICubeTowerAddCubeService
@@ -49,6 +50,13 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
             newCube.Setup(cubeBalanceModel);
             cubeTowerWidget.AddCube(newCube);
             return true;
+        }
+
+        public void RemoveCube(ICubeTowerWidget cubeTowerWidget, CubeTowerCubeWidget cubeWidget)
+        {
+            cubeTowerWidget.RemoveCube(cubeWidget);
+            var pool = _objectPoolService.CubeTowerCubeWidgetPool;
+            pool.Despawn(cubeWidget);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
 {
     public class CubeWidget : UIWidget, IProjectPoolable
     {
-        [SerializeField] private Image _image;
+        [SerializeField] protected Image _image;
 
         protected ICubeBalanceModel _balanceModel;
 

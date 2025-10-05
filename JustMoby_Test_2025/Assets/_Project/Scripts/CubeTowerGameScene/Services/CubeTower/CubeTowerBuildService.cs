@@ -13,6 +13,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
     public interface ICubeTowerBuildService
     {
         bool TryBuildTower(Transform cubeTowerContainer, out ICubeTowerWidget cubeTowerWidget);
+        void DestroyTower(ICubeTowerWidget cubeTowerWidget);
     }
 
     public class CubeTowerBuildService : ICubeTowerBuildService
@@ -50,6 +51,13 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
             var maxActiveTowerCount = _balanceService.CubeTowerBuild.MaxActiveTowerCount;
             var result = activeTowerCount < maxActiveTowerCount;
             return result;
+        }
+
+        public void DestroyTower(ICubeTowerWidget cubeTowerWidget)
+        {
+            _repository.Remove(cubeTowerWidget);
+            var pool = _objectPoolService.CubeTowerWidgetPool;
+            pool.Despawn((CubeTowerWidget)cubeTowerWidget);
         }
     }
 }
