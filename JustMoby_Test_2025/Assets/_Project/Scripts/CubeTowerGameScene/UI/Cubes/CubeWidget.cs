@@ -1,4 +1,5 @@
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
+using _Project.Scripts.Project.Extensions;
 using _Project.Scripts.Project.ObjectPools;
 using _Project.Scripts.Project.UI;
 using System.Collections;
@@ -47,10 +48,14 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Cubes
         public virtual void OnDespawned()
         {
             SetActive(false);
+            transform.ResetLocalPosition();
+            transform.ResetLocalRotation();
+            transform.ResetLocalScale();
         }
 
         public virtual void OnSpawned()
         {
+            SetActive(false);
         }
 
         public class Pool : ProjectMonoMemoryPool<CubeWidget> { }

@@ -37,7 +37,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole
             if (overlap)
                 _dragAndDropController.OnDrop(this);
             else
-                _dragAndDropController.OnDrop();
+                _dragAndDropController.OnDrop(eventData.position);
         }
     }
 }

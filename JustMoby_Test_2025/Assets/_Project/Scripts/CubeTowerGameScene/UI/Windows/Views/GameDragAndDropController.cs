@@ -1,6 +1,7 @@
 using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
 using _Project.Scripts.CubeTowerGameScene.Services.CubeTower;
+using _Project.Scripts.CubeTowerGameScene.Services.VFX;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeTower;
 using System;
@@ -20,8 +21,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
         void OnDrag(ICubeBalanceModel cubeBalanceModel);
         void OnDrag(CubeTowerCubeWidget cubeTowerCubeWidget);
-        
-        void OnDrop();
+
+        void OnDrop(Vector2 pointerEventDataPosition);
         void OnDrop(ICubeDeleteHoleWidget cubeDeleteHoleWidget);
         void OnDrop(ICubeTowerBuildAreaWidget cubeTowerBuildAreaWidget, PointerEventData pointerEventData);
         void OnDrop(CubeTowerCubeWidget cubeTowerCubeWidget);
@@ -34,6 +35,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
         [Inject] private IInputController _inputController;
         [Inject] private ICubeTowerService _cubeTowerService;
+        [Inject] private IDOTweenSequenceService _doTweenSequenceService;
 
         private bool _dropInProcess;
 
@@ -62,21 +64,21 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
                 return;
 
             LogUtils.Error(this, $"OnDrop OnPointerUpEvent");
-
-            OnDrop();
-            _inputController.PointerUpEvent -= OnPointerUpEvent;
+            OnDrop(vector);
         }
 
-        public void OnDrop()
+        public void OnDrop(Vector2 pointerEventDataPosition)
         {
+            _inputController.PointerUpEvent -= OnPointerUpEvent;
+
             if (!HasDraggableObject())
-            {
-                _inputController.PointerUpEvent -= OnPointerUpEvent;
                 return;
-            }
 
             _dropInProcess = true;
-            
+
+            if (_cubeBalanceModel != null)
+                _doTweenSequenceService.StartCubeDisappearSequence(_cubeBalanceModel, pointerEventDataPosition);
+
             DragEndEvent?.Invoke();
 
             _cubeBalanceModel = null;
@@ -141,6 +143,13 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             var tryBuildResult = _cubeTowerService.TryBuildTower(cubeTowerBuildAreaWidget.CubeTowerContainer, _cubeBalanceModel);
 
+            if (!tryBuildResult)
+            {
+                LogUtils.Error(this, $"OnDrop Cube Tower Build Area Widget 3");
+                OnDrop(pointerEventData.position);
+                return;
+            }
+
             DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
 
@@ -183,6 +192,8 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             _dropInProcess = false;
         }
+
+        
 
         private bool HasDraggableObject()
         {
