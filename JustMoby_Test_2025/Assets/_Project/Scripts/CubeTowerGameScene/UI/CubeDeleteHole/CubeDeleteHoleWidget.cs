@@ -11,10 +11,17 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole
 {
     public interface ICubeDeleteHoleWidget : IDropHandler
     { 
+        Transform TopPointTransform { get; }
+        Transform HolePointTransform { get; }
     }
 
     public class CubeDeleteHoleWidget : MonoBehaviour, ICubeDeleteHoleWidget
     {
+        public Transform TopPointTransform => _topPointTransform;
+        public Transform HolePointTransform => _holePointTransform;
+
+        [SerializeField] private Transform _topPointTransform;
+        [SerializeField] private Transform _holePointTransform;
         [SerializeField] private PolygonCollider2D _collider;
 
         [Inject] private ICameraController _cameraController;
