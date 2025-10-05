@@ -76,7 +76,12 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             }
 
             _dropInProcess = true;
+            
             DragEndEvent?.Invoke();
+
+            _cubeBalanceModel = null;
+            _cubeTowerCubeWidget = null;
+
             _dropInProcess = false;
         }
 
@@ -111,6 +116,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
             DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
 
+            _cubeBalanceModel = null;
+            _cubeTowerCubeWidget = null;
+
             _dropInProcess = false;
         }
 
@@ -135,6 +143,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
+
+            _cubeBalanceModel = null;
+            _cubeTowerCubeWidget = null;
 
             _dropInProcess = false;
         }
@@ -166,6 +177,9 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
 
             DragEndEvent?.Invoke();
             _inputController.PointerUpEvent -= OnPointerUpEvent;
+
+            _cubeBalanceModel = null;
+            _cubeTowerCubeWidget = null;
 
             _dropInProcess = false;
         }
