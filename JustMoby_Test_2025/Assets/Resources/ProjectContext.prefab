@@ -161,6 +161,7 @@ MonoBehaviour:
   _popupController: {fileID: 4542276502690531740}
   _panelConfig: {fileID: 11400000, guid: 9f85ddaee072d384fa6be5910d078897, type: 2}
   _panelController: {fileID: 6597775352970755003}
+  _localizationConfig: {fileID: 11400000, guid: 655085e8061c97242968ab45a20ec913, type: 2}
 --- !u!1 &8674178193343662560
 GameObject:
   m_ObjectHideFlags: 0
