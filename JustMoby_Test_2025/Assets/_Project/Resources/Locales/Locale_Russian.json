@@ -12,7 +12,11 @@
 		"Value":"Молодец! Ты начал строить башенку! ^_^"
 	},
 	{
-		"Key":"CUBE_TOWER_GAME/CUBE_TOWER_ADD",
+		"Key":"CUBE_TOWER_GAME/CUBE_TOWER_ADD_SUCCESS",
 		"Value":"Умничка! Ты добавил еще один кубик в башенку! ^_^"
+	},
+	{
+		"Key":"CUBE_TOWER_GAME/CUBE_TOWER_ADD_FAIL",
+		"Value":"Не получилось добавить кубик в башенку >_<"
 	}
 ]
