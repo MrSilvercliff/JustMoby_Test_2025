@@ -1,6 +1,7 @@
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
 using _Project.Scripts.Project.Scenes;
 using Assets._Project.Scripts.CubeTowerGameScene.Scene;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace _Project.Scripts.CubeTowerGameScene.Scene
 
         protected override async Task OnAwake()
         {
+            DOTween.Init();
             await _serviceIniter.Init();
         }
 
