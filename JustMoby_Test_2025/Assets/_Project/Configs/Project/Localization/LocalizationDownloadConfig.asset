@@ -15,5 +15,5 @@ MonoBehaviour:
   _googleSpreadsheetKey: 1Wp-r9nomljuV23La_k--8o56jCsfEJlfHIo-S9WsuSQ
   _pages:
   - CUBE_TOWER_GAME
-  _parsePageNameToKey: 0
+  _parsePageNameToKey: 1
   _localizationConfig: {fileID: 11400000, guid: 655085e8061c97242968ab45a20ec913, type: 2}

@@ -1,0 +1,18 @@
+[
+	{
+		"Key":"CUBE_TOWER_GAME/CUBE_DISAPPEAR",
+		"Value":"Oh, no! Cube disappeared! >_<"
+	},
+	{
+		"Key":"CUBE_TOWER_GAME/CUBE_MOVE_TO_HOLE",
+		"Value":"You thrown the cube away >_<"
+	},
+	{
+		"Key":"CUBE_TOWER_GAME/CUBE_TOWER_BUILD",
+		"Value":"Good! You just started a tower! ^_^"
+	},
+	{
+		"Key":"CUBE_TOWER_GAME/CUBE_TOWER_ADD",
+		"Value":"Nice! You add another cube to tower! ^_^"
+	}
+]

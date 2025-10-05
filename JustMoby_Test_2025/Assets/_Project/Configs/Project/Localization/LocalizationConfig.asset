@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: LocalizationConfig
   m_EditorClassIdentifier: 
   _defaultLanguage: 30
-  _configItems: []
+  _configItems:
+  - _language: 30
+    _localeFile: {fileID: 4900000, guid: fad992397ea3f9d49bc917cb3322afc5, type: 3}
+  - _language: 10
+    _localeFile: {fileID: 4900000, guid: 3ec5f62b893175a458f17fa75431924e, type: 3}
