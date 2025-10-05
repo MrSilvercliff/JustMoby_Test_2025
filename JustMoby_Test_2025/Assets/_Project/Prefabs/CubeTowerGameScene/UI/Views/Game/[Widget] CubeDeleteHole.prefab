@@ -31,8 +31,8 @@ RectTransform:
   m_Children:
   - {fileID: 8875458693350423904}
   - {fileID: 2922960661199046725}
-  - {fileID: 540797283283009394}
   - {fileID: 8684641721151624236}
+  - {fileID: 540797283283009394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0d2e21da6b06c4e9b19de820d86044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _topPointTransform: {fileID: 8684641721151624236}
+  _holePointTransform: {fileID: 540797283283009394}
   _collider: {fileID: 2609464098817509416}
 --- !u!1 &2291352905560273695
 GameObject:
