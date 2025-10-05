@@ -1,4 +1,5 @@
 using _Project.Scripts.CubeTowerGameScene.UI.Windows.Views;
+using _Project.Scripts.Project.Camera;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,17 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole
     {
         [SerializeField] private PolygonCollider2D _collider;
 
+        [Inject] private ICameraController _cameraController;
         [Inject] private IGameDragAndDropController _dragAndDropController;
 
         public void OnDrop(PointerEventData eventData)
         {
-            LogUtils.Error(this, $"OnDrop");
+            //LogUtils.Error(this, $"OnDrop");
 
-            if (_collider.OverlapPoint(eventData.position))
+            var worldPosition = _cameraController.Camera.ScreenToWorldPoint(eventData.position);
+            var overlap = _collider.OverlapPoint(worldPosition);
+
+            if (overlap)
                 _dragAndDropController.OnDrop(this);
             else
                 _dragAndDropController.OnDrop();
