@@ -15,21 +15,12 @@ namespace ZerglingUnityPlugins.Localization_JSON_Object.Editor
 
             if (GUILayout.Button("DOWNLOAD"))
                 OnDownloadButtonClick();
-
-            if (GUILayout.Button("TEST"))
-                OnTestButtonClick();
         }
 
         private void OnDownloadButtonClick()
         {
             var config = (ILocalizationDownloadConfig)target;
             config.Download();
-        }
-
-        private void OnTestButtonClick()
-        { 
-            var config = (ILocalizationDownloadConfig)target;
-            config.Test();
         }
     }
 }
