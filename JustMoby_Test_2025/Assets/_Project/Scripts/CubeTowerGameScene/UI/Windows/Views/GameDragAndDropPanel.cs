@@ -20,7 +20,7 @@ namespace _Project.Scripts.CubeTowerGameScene.UI.Windows.Views
         [Inject] private IGameDragAndDropController _dragAndDropController;
         [Inject] private IMonoUpdater _monoUpdater;
 
-        private Vector2 _offsetMultiplier;
+        private Vector2 _offsetMultiplier; // ratio between canvas rect size and screen size
         private bool _isDragging;
 
         public void Init()
