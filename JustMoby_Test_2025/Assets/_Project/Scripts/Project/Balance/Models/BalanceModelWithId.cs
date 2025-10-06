@@ -9,7 +9,7 @@ namespace _Project.Scripts.Project.Balance.Models
         string ID { get; }
     }
 
-    public class BalanceModelWithId : BalanceModel, IBalanceModelWithId
+    public abstract class BalanceModelWithId : BalanceModel, IBalanceModelWithId
     {
         public string ID => _id;
 
