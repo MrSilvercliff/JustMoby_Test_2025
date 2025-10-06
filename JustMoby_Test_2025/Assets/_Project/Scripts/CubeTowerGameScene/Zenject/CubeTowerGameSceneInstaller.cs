@@ -20,6 +20,10 @@ using ZerglingUnityPlugins.ZenjectExtentions.SceneInstallers;
 
 namespace _Project.Scripts.CubeTowerGameScene.Zenject
 {
+    /// <summary>
+    /// Cube Tower Game FIRST entry point
+    /// There are binding for Cube Tower Game scene
+    /// </summary>
     public class CubeTowerGameSceneInstaller : SceneInstallerBasic
     {
         [SerializeField] private CameraController _cameraController;

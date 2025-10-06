@@ -25,6 +25,10 @@ using ZerglingUnityPlugins.ZenjectExtentions.ContextProvider;
 
 namespace _Project.Scripts.Project.Zenject
 {
+    /// <summary>
+    /// PROJECT ENTRY POINT
+    /// There are basic binding for services and config that can be used from ANY scene
+    /// </summary>
     public class ProjectInstaller : MonoInstaller
     {
         [SerializeField] private MonoUpdater _monoUpdater;
