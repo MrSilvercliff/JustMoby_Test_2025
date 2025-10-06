@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,12 +12,16 @@ namespace _Project.Scripts.Project.Services
     { 
     }
 
+    /// <summary>
+    /// This service will init Project scope services that can be used from any other scene
+    /// </summary>
     public class ProjectServiceIniter : ServiceIniter, IProjectServiceIniter
     {
         [Inject] private ILocalizationService _localizationService;
 
         protected override Task<bool> OnInit()
         {
+            DOTween.Init();
             return Task.FromResult(true);
         }
 

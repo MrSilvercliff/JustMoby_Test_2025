@@ -21,7 +21,6 @@ namespace _Project.Scripts.CubeTowerGameScene.Scene
 
         protected override async Task OnAwake()
         {
-            DOTween.Init();
             await _projectServiceIniter.Init();
             await _serviceIniter.Init();
         }
