@@ -17,6 +17,10 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
         void RemoveCube(ICubeTowerWidget cubeTower, CubeTowerCubeWidget cubeWidget);
     }
 
+    /// <summary>
+    /// Entry point to Cube Tower feature
+    /// You should use only this class to interact with Cube Towers
+    /// </summary>
     public class CubeTowerService : ICubeTowerService
     {
         [Inject] private ICubeTowerRepository _repository;

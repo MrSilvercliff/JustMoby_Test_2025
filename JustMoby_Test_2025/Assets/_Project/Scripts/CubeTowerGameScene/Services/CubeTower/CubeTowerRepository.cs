@@ -11,6 +11,11 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.CubeTower
         bool TryGetCubeTowerByCubeWidget(CubeTowerCubeWidget cubeWidget, out ICubeTowerWidget cubeTowerWidget);
     }
 
+    /// <summary>
+    /// Repository contains all active Cube Towers. 
+    /// When new Cube Tower is built - it will be added to repository
+    /// When Cube Tower is destroyed - it will be deleted from repository
+    /// </summary>
     public class CubeTowerRepository : RepositoryList<ICubeTowerWidget>, ICubeTowerRepository
     {
         public bool TryGetCubeTowerByCubeWidget(CubeTowerCubeWidget cubeWidget, out ICubeTowerWidget cubeTowerWidget)
