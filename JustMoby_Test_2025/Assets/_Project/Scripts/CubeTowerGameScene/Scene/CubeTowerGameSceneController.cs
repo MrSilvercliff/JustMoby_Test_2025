@@ -31,6 +31,8 @@ namespace _Project.Scripts.CubeTowerGameScene.Scene
 
             await _serviceIniter.InitServices(1);
 
+            await _serviceIniter.InitServices(2);
+
             await _viewController.OpenView<GameView>();
         }
 

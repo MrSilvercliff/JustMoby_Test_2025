@@ -2,12 +2,14 @@ using _Project.Scripts.CubeTowerGameScene.Services.Balance.Models;
 using _Project.Scripts.CubeTowerGameScene.UI.CubeDeleteHole;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
+using ZerglingUnityPlugins.Tools.Scripts.Interfaces.ProjectService.AsyncSync;
 
 namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
 {
-    public interface IDOTweenSequenceService
+    public interface IDOTweenSequenceService : IProjectService
     {
         IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas();
         void Clear();
@@ -21,6 +23,20 @@ namespace _Project.Scripts.CubeTowerGameScene.Services.VFX
     {
         [Inject] private IDOTweenSequenceDataRepository _sequenceDataRepository;
         [Inject] private IDOTweenSequenceDataCreator _sequenceDataCreator;
+
+        public Task<bool> Init()
+        {
+            _sequenceDataRepository.Init();
+            _sequenceDataCreator.Init();
+            return Task.FromResult(true);
+        }
+
+        public bool Flush()
+        {
+            _sequenceDataRepository.Flush();
+            _sequenceDataCreator.Flush();
+            return true;
+        }
 
         public IReadOnlyCollection<IDOTweenSequenceData> GetSequenceDatas()
         {

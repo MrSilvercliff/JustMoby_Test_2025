@@ -1,6 +1,7 @@
 using _Project.Scripts.CubeTowerGameScene.Input;
 using _Project.Scripts.CubeTowerGameScene.Services.Balance;
 using _Project.Scripts.CubeTowerGameScene.Services.ObjectPools;
+using _Project.Scripts.CubeTowerGameScene.Services.VFX;
 using _Project.Scripts.Project.Services;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
 
         #endregion First
 
+        #region Second
+
+        [Inject] private IDOTweenSequenceService _doTweenSequenceService;
+
+        #endregion Second
+
         protected override Task<bool> OnInit()
         {
             return Task.FromResult(true);
@@ -64,6 +71,14 @@ namespace Assets._Project.Scripts.CubeTowerGameScene.Scene
             AddService(_viewController);
 
             AddService(_inputController);
+
+            var result = await InitServices();
+            return result;
+        }
+
+        private async Task<bool> InitServicesSecond()
+        { 
+            AddService(_doTweenSequenceService);
 
             var result = await InitServices();
             return result;
